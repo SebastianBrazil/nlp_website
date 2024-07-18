@@ -7,12 +7,11 @@ const HeroComponent = () => {
   return (
     <>
       <section>
-        <div style={{position: "relative"}} className="w-screen h-[500px] overflow-hidden">
+        <div className="w-screen h-[500px] relative">
           <Image
             fill={true}
             placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
             priority={true}
-            style={{objectFit: "cover"}}
             className=""
             src={"/assets/heroPlaceholder.png"}
             alt="Hero Image"

@@ -1,8 +1,8 @@
 "use client"
 
-import FooterComponent from "@/Components/FooterComponent";
-import HeroComponent from "@/Components/HeroComponent";
-import NavbarComponent from "@/Components/NavbarComponent";
+import FooterComponent from "@/app/Components/FooterComponent";
+import HeroComponent from "@/app/Components/HeroComponent";
+import NavbarComponent from "@/app/Components/NavbarComponent";
 
 export default function Home() {
   return (
