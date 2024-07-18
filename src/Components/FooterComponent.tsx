@@ -7,7 +7,7 @@ const FooterComponent = () => {
         <>
             <footer>
                 <div className='bg-[#343434] w-screen h-[150px]'>
-                    
+                    <p>bruh</p>
                 </div>
             </footer>
         </>

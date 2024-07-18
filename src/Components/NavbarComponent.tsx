@@ -38,6 +38,7 @@ const NavbarComponent = () => {
                             sizes="100vw"
                         />
                     </div> */}
+                    <p>bruh</p>
                 </div>
                 <nav>
                     <div className='w-screen h-[60px] bg-slate-300 flex justify-center'>
