@@ -15,7 +15,7 @@ const HeroComponent = () => {
             className=""
             src={"/assets/heroPlaceholder.png"}
             alt="Hero Image"
-            sizes="100vw"
+            // sizes="100vw"
           />
         </div>
       </section>
