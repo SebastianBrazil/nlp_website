@@ -4,7 +4,7 @@ const FooterComponent = () => {
     return (
         <>
             <footer>
-                <div className='bg-slate-700 w-screen h-[150px]'>
+                <div className='bg-[#343434] w-screen h-[150px]'>
                     
                 </div>
             </footer>
