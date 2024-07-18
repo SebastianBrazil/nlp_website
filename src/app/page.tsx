@@ -1,29 +1,14 @@
 "use client"
 
-import FooterComponent from "@/components/FooterComponent";
-import HeroComponent from "@/components/HeroComponent";
-import NavbarComponent from "@/components/NavbarComponent";
-
 export default function Home() {
   return (
     <>
-      <div className="min-h-screen h-full grid">
+      <div className="grid grid-cols-2">
+        
+        <p className="col-span-1 font-martel">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <div>
+        <div className="col-span-1">
 
-          <NavbarComponent />
-          <HeroComponent />
-
-          <div className="flex justify-center my-10">
-            <main className="w-[80%]">
-              <p>page start</p>
-            </main>
-          </div>
-
-        </div>
-
-        <div className='inline-block self-end'>
-          <FooterComponent />
         </div>
 
       </div>

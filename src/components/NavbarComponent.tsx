@@ -42,10 +42,12 @@ const NavbarComponent = () => {
                 </div>
                 <nav>
                     <div className='w-screen h-[60px] bg-slate-300 flex justify-center'>
-                        <div className='w-96 flex justify-around'>
-                            <button className='cursor-pointer h-8' onClick={()=>{goToHome()}}>Home</button>
-                            <button className='cursor-pointer h-8' onClick={()=>{goToAbout()}}>About Us</button>
-                            <button className='cursor-pointer h-8' onClick={()=>{goToGallery()}}>Gallery</button>
+                        <div className='w-96 grid items-center'>
+                            <div className='flex justify-around'>
+                            <a className='cursor-pointer' onClick={()=>{goToHome()}}>Home</a>
+                            <a className='cursor-pointer' onClick={()=>{goToAbout()}}>About Us</a>
+                            <a className='cursor-pointer' onClick={()=>{goToGallery()}}>Gallery</a>
+                            </div>
                         </div>
                     </div>
                 </nav>
