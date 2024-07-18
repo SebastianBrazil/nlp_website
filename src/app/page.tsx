@@ -7,7 +7,7 @@ import NavbarComponent from "@/Components/NavbarComponent";
 export default function Home() {
   return (
     <>
-      <div className="min-h-screen h-full grid">
+      <div className="min-h-screen h-full w-screen grid">
 
         <div>
 
