@@ -7,7 +7,7 @@ const HeroComponent = () => {
   return (
     <>
       <section>
-        <div style={{position: "relative"}} className="w-screen h-[500px]">
+        {/* <div style={{position: "relative"}} className="w-screen h-[500px]">
           <Image
             fill={true}
             placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
@@ -15,9 +15,9 @@ const HeroComponent = () => {
             className=""
             src={"/assets/heroPlaceholder.png"}
             alt="Hero Image"
-            // sizes="100vw"
+            sizes="100vw"
           />
-        </div>
+        </div> */}
       </section>
     </>
   );

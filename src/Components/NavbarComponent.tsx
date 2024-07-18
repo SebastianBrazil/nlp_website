@@ -25,7 +25,7 @@ const NavbarComponent = () => {
 
     return (
         <>
-            <div>
+            <header>
                 <div className='h-[110px] w-screen bg-[#343434]'>
                     {/* <div className="w-screen h-[500px] relative">
                         <Image
@@ -48,7 +48,7 @@ const NavbarComponent = () => {
                         </div>
                     </div>
                 </nav>
-            </div>
+            </header>
         </>
     )
 }
