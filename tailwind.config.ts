@@ -15,7 +15,8 @@ const config: Config = {
       },
     },
     fontFamily: {
-      martel: ['martel']
+      martel: ['martel'],
+      gilda: ['gilda']
     }
   },
   plugins: [],

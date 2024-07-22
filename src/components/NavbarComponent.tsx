@@ -8,45 +8,52 @@ const NavbarComponent = () => {
     const router = useRouter();
 
     const goToHome = () => {
-      router.push('/');
+        router.push('/');
     }
 
     const goToGallery = () => {
-      router.push('/gallery');
+        router.push('/gallery');
     }
-  
+
     const goToAbout = () => {
-      router.push('/about');
+        router.push('/about');
     }
-  
+
     const goToContact = () => {
-      router.push('/contact');
+        router.push('/contact');
     }
 
     return (
         <>
             <header>
-                <div className='h-[110px] w-screen bg-[#343434]'>
-                    {/* <div className="w-screen h-[500px] relative">
-                        <Image
-                            fill={true}
-                            placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
-                            priority={true}
-                            className=""
-                            src={"/assets/heroPlaceholder.png"}
-                            alt="Hero Image"
-                            sizes="100vw"
-                        />
-                    </div> */}
-                    <p>bruh</p>
+                <div className='h-[110px] w-screen bg-[#222831]'>
+                    <div className='flex justify-between'>
+                        <div>
+                            {/* <div className="w-screen h-[500px] relative">
+                                <Image
+                                    fill={true}
+                                    placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
+                                    priority={true}
+                                    className=""
+                                    src={"/assets/heroPlaceholder.png"}
+                                    alt="Hero Image"
+                                    sizes="100vw"
+                                />
+                            </div> */}
+                            <p className='text-white'>No Limits Painting</p>
+                        </div>
+                        <div>
+                            <button className='bg-red-400'>Contact</button>
+                        </div>
+                    </div>
                 </div>
                 <nav>
-                    <div className='w-screen h-[60px] bg-slate-300 flex justify-center'>
+                    <div className='w-screen h-[60px] bg-[#EEEEEE] flex justify-center'>
                         <div className='w-96 grid items-center'>
-                            <div className='flex justify-around'>
-                            <a className='cursor-pointer' onClick={()=>{goToHome()}}>Home</a>
-                            <a className='cursor-pointer' onClick={()=>{goToAbout()}}>About Us</a>
-                            <a className='cursor-pointer' onClick={()=>{goToGallery()}}>Gallery</a>
+                            <div className='flex justify-between'>
+                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToHome() }}>Home</a>
+                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToAbout() }}>About Us</a>
+                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToGallery() }}>Gallery</a>
                             </div>
                         </div>
                     </div>
