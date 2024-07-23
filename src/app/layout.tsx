@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import FooterComponent from "@/components/FooterComponent";
-import NavbarComponent from "@/components/NavbarComponent";
 
 export const metadata: Metadata = {
   title: "No Limits Painting",
-  description: "Painting Company Specializing in Cabinets",
+  description: "Painting Company Specializing in Cabinets - Located in Stockton California",
 };
 
 export default function RootLayout({
@@ -16,16 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen h-full grid">
-          <div>
-            <NavbarComponent />
-            {children}
-          </div>
-
-          <div className='inline-block self-end'>
-            <FooterComponent />
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   );

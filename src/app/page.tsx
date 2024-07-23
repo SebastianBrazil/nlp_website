@@ -2,10 +2,11 @@
 
 import HeroComponent from "@/components/HeroComponent";
 import Image from "next/image";
+import LayoutPublic from "@/components/LayoutPublic";
 
 export default function Home() {
   return (
-    <div>
+    <LayoutPublic>
       <HeroComponent classTags={""} src={"/assets/heroPlaceholder.png"} alt={"Hero Timage"} />
       <div className="flex justify-center my-10">
         <main className="w-[70%]">
@@ -22,7 +23,7 @@ export default function Home() {
                   className=""
                   src={"/assets/heroPlaceholder.png"}
                   alt="Home Image"
-                  // sizes="50vw"
+                // sizes="50vw"
                 />
               </div>
             </div>
@@ -30,6 +31,6 @@ export default function Home() {
 
         </main>
       </div>
-    </div>
+    </LayoutPublic>
   );
 }

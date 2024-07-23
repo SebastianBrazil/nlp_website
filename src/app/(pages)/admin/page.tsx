@@ -1,16 +1,19 @@
+import LayoutPublic from '@/components/LayoutPublic'
 import React from 'react'
 
 const page = () => {
     return (
-        <div>
-            <div className="flex justify-center my-10">
-                <main className="w-[80%]">
+        <LayoutPublic>
+            <div>
+                <div className="flex justify-center my-10">
+                    <main className="w-[70%]">
 
-                    <p className='text-center'>Admin Login</p>
+                        <p className='text-center'>Admin Login</p>
 
-                </main>
+                    </main>
+                </div>
             </div>
-        </div>
+        </LayoutPublic>
     )
 }
 

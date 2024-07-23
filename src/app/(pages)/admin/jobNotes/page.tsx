@@ -1,10 +1,19 @@
+import LayoutAdmin from '@/components/LayoutAdmin'
 import React from 'react'
 
 const page = () => {
     return (
-        <div>
+        <LayoutAdmin>
+            <div>
+                <div className="flex justify-center my-10">
+                    <main className="w-[70%]">
 
-        </div>
+                        <p className='text-center'>Admin Login</p>
+
+                    </main>
+                </div>
+            </div>
+        </LayoutAdmin>
     )
 }
 
