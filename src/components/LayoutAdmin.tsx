@@ -1,11 +1,11 @@
 import FooterComponent from "@/components/FooterComponent";
-import NavbarComponent from "./NavbarComponent";
+import NavbarAdminComponent from "./NavbarAdminComponent";
 
 export default function LayoutAdmin({ children }: { children: React.ReactNode }) {
     return (
         <div className="min-h-screen h-full grid">
             <div>
-                <NavbarComponent />
+                <NavbarAdminComponent />
                 {children}
             </div>
 

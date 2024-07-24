@@ -9,7 +9,12 @@
     }
 
     @font-face {
-        font-family: gilda;
+        font-family: guilda;
         src: url(../../public/fonts/GildaDisplay-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: beau;
+        src: url(../../public/fonts/BeauRivage-Regular.ttf);
     }
 }

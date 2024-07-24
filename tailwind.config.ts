@@ -16,6 +16,7 @@ const config: Config = {
     },
     fontFamily: {
       martel: ['martel'],
+      beau: ['beau'],
       gilda: ['gilda']
     }
   },

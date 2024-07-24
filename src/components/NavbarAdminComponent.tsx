@@ -7,28 +7,28 @@ import React from 'react'
 const NavbarAdminComponent = () => {
     const router = useRouter();
 
-    const goToHome = () => {
+    const goToAdminHome = () => {
+        router.push('/admin/landing');
+    }
+
+    const goToAdminGallery = () => {
+        router.push('/admin/galleryMod');
+    }
+
+    const goToJobNotes= () => {
+        router.push('/admin/jobNotes');
+    }
+
+    const signOut = () => {
         router.push('/');
-    }
-
-    const goToGallery = () => {
-        router.push('/gallery');
-    }
-
-    const goToAbout = () => {
-        router.push('/about');
-    }
-
-    const goToContact = () => {
-        router.push('/contact');
     }
 
     return (
         <>
             <header>
                 <div className='h-[110px] w-screen bg-[#222831]'>
-                    <div className='flex justify-between'>
-                        <div>
+                    <div className='h-[110px] flex justify-between'>
+                        <div className='grid items-center'>
                             {/* <div className="w-screen h-[500px] relative">
                                 <Image
                                     fill={true}
@@ -40,20 +40,21 @@ const NavbarAdminComponent = () => {
                                     sizes="100vw"
                                 />
                             </div> */}
-                            <p className='text-white'>No Limits Painting</p>
+                            <p className='text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</p>
                         </div>
-                        <div>
-                            <button className='bg-red-400'>Contact</button>
+                        <div className='grid items-center mr-10'>
+                            <p className='text-white font-beau tracking-wider py-2 text-5xl px-10 rounded-full'>Administer</p>
                         </div>
                     </div>
                 </div>
                 <nav>
                     <div className='w-screen h-[60px] bg-[#EEEEEE] flex justify-center'>
-                        <div className='w-96 grid items-center'>
+                        <div className='w-[500px] grid items-center'>
                             <div className='flex justify-between'>
-                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToHome() }}>Home</a>
-                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToAbout() }}>About Us</a>
-                                <a className='cursor-pointer font-gilda text-2xl' onClick={() => { goToGallery() }}>Gallery</a>
+                                <a className='cursor-pointer font-gilda tracking-wide text-2xl' onClick={() => { goToAdminHome() }}>Home</a>
+                                <a className='cursor-pointer font-gilda tracking-wide text-2xl' onClick={() => { goToAdminGallery() }}>Gallery</a>
+                                <a className='cursor-pointer font-gilda tracking-wide text-2xl' onClick={() => { goToJobNotes() }}>Job Notes</a>
+                                <a className='cursor-pointer font-gilda tracking-wide text-2xl' onClick={() => { signOut() }}>Sign Out</a>
                             </div>
                         </div>
                     </div>

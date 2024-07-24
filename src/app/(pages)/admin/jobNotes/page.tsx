@@ -8,7 +8,7 @@ const page = () => {
                 <div className="flex justify-center my-10">
                     <main className="w-[70%]">
 
-                        <p className='text-center'>Admin Login</p>
+                        <p className='text-xl font-gilda text-center'>Admin Job Notes</p>
 
                     </main>
                 </div>
