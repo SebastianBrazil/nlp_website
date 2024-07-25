@@ -15,7 +15,7 @@ const NavbarAdminComponent = () => {
         router.push('/admin/galleryMod');
     }
 
-    const goToJobNotes= () => {
+    const goToJobNotes = () => {
         router.push('/admin/jobNotes');
     }
 
@@ -40,7 +40,7 @@ const NavbarAdminComponent = () => {
                                     sizes="100vw"
                                 />
                             </div> */}
-                            <p className='text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</p>
+                            <a onClick={() => { goToAdminHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
                         </div>
                         <div className='grid items-center mr-10'>
                             <p className='text-white font-beau tracking-wider py-2 text-5xl px-10 rounded-full'>Administer</p>
