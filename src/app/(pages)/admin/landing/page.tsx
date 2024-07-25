@@ -1,7 +1,7 @@
 import LayoutAdmin from '@/components/LayoutAdmin'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
     return (
         <LayoutAdmin>
             <div>
@@ -17,4 +17,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

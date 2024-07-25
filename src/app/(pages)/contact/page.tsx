@@ -4,7 +4,7 @@ import HeroComponent from '@/components/HeroComponent'
 import LayoutPublic from '@/components/LayoutPublic'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
     return (
         <LayoutPublic>
             <div>
@@ -25,4 +25,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
