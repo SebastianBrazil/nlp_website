@@ -21,7 +21,7 @@ const Page = () => {
             let token: IToken = await login(submitData);
             if (token.token != null) {
                 sessionStorage.setItem("NLP_LoginToken", token.token);
-                router.push('/admin/landing992341653');
+                router.push('/admin/landingHere992341653');
             } else {
                 console.log("failed token")
             }
