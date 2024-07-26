@@ -3,9 +3,12 @@
 import GalleryCardComponent from '@/components/GalleryCardComponent'
 import HeroComponent from '@/components/HeroComponent'
 import LayoutPublic from '@/components/LayoutPublic'
-import React from 'react'
+import ModalDisplayComponent from '@/components/ModalDisplayComponent'
+import React, { useState } from 'react'
 
 const Page = () => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
     return (
         <LayoutPublic>
             <div>
@@ -18,14 +21,15 @@ const Page = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <GalleryCardComponent />
-                            <GalleryCardComponent />
-                            <GalleryCardComponent />
+                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
                         </div>
 
                     </main>
                 </div>
             </div>
+            {isModalOpen && <ModalDisplayComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
         </LayoutPublic>
     )
 }

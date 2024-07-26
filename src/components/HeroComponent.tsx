@@ -8,7 +8,7 @@ const HeroComponent = (props: HeroProps) => {
   return (
     <>
       <section>
-        <div className="w-screen h-[500px] relative">
+        <div className="z-10 w-screen h-[500px] relative">
           <Image
             fill={true}
             placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
