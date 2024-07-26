@@ -12,9 +12,6 @@ const Page = () => {
     const router = useRouter();
 
     const submitLoginAttempt = async () => {
-        console.log(usernameVar);
-        console.log(passwordVar);
-
         const submitData: ISubmitData = {
             username: usernameVar,
             password: passwordVar
@@ -23,8 +20,8 @@ const Page = () => {
         try {
             let token: IToken = await login(submitData);
             if (token.token != null) {
-                sessionStorage.setItem("Token", token.token);
-                router.push('/admin/landing');
+                sessionStorage.setItem("NLP_LoginToken", token.token);
+                router.push('/admin/landing992341653');
             } else {
                 console.log("failed token")
             }
@@ -39,7 +36,8 @@ const Page = () => {
                 <div className="flex justify-center my-10">
                     <main className="w-[70%] grid justify-center">
 
-                        <p className='text-xl font-gilda text-center pb-10'>Admin Login</p>
+                        <p className='text-2xl font-gilda text-center pb-1'>Admin Login</p>
+                        <p className='font-gilda text-center pb-10'>If you got here by accident, feel free to return to Home</p>
 
                         <form action={() => submitLoginAttempt()}>
                             <div className='grid'>

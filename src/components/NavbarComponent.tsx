@@ -43,7 +43,7 @@ const NavbarComponent = () => {
                             <a onClick={() => { goToHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
                         </div>
                         <div className='grid items-center mr-10'>
-                            <button onClick={() => { goToContact() }} className='bg-[#ad3232] text-[#EEEEEE] font-beau py-2 text-4xl px-10 tracking-wider rounded-full'>Contact</button>
+                            <button onClick={() => { goToContact() }} className='bg-[#ad3232] text-[#EEEEEE] font-beau py-0 text-[44px] px-10 tracking-wider rounded-full'>Contact</button>
                         </div>
                     </div>
                 </div>
@@ -51,9 +51,9 @@ const NavbarComponent = () => {
                     <div className='w-screen h-[60px] bg-[#EEEEEE] flex justify-center'>
                         <div className='w-[450px] grid items-center'>
                             <div className='flex justify-between'>
-                                <a className='cursor-pointer tracking-wide font-beau text-3xl' onClick={() => { goToHome() }}>Home</a>
-                                <a className='cursor-pointer tracking-wide font-beau text-3xl' onClick={() => { goToAbout() }}>About Us</a>
-                                <a className='cursor-pointer tracking-wide font-beau text-3xl' onClick={() => { goToGallery() }}>Gallery</a>
+                                <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToHome() }}>Home</a>
+                                <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToAbout() }}>About Us</a>
+                                <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToGallery() }}>Gallery</a>
                             </div>
                         </div>
                     </div>
