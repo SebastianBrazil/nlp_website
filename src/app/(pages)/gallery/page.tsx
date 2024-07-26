@@ -21,15 +21,15 @@ const Page = () => {
                         </div>
 
                         <div className='flex justify-between'>
-                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-                            <GalleryCardComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
                         </div>
 
                     </main>
                 </div>
             </div>
-            {isModalOpen && <ModalDisplayComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
+            {isModalOpen && <ModalDisplayComponent setIsModalOpen={setIsModalOpen} />}
         </LayoutPublic>
     )
 }

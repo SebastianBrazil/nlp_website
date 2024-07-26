@@ -3,6 +3,11 @@ import Image from 'next/image'
 import React from 'react'
 
 const GalleryCardComponent = (props: IGalleryDisplayProps) => {
+    const openModal = () => {
+        props.setIsModalOpen(true);
+        document.body.classList.add("overflow-hidden");
+    }
+
     return (
         <div className='border rounded-3xl border-[#222831] w-[320px] h-[320px]'>
             <div className="w-full h-[80%] bg-[#222831] rounded-t-3xl grid place-items-center">
@@ -11,7 +16,7 @@ const GalleryCardComponent = (props: IGalleryDisplayProps) => {
             </div>
 
             <div className='grid items-center'>
-                <button onClick={() => { props.setIsModalOpen(!props.isModalOpen) }} className='bg-[#372abc] text-white font-gilda tracking-wide mx-10 mt-5 rounded-full'>Click Here To Expand</button>
+                <button onClick={() => { openModal() }} className='bg-[#372abc] text-white font-gilda tracking-wide mx-10 mt-5 rounded-full'>Click Here To Expand</button>
             </div>
         </div>
     )

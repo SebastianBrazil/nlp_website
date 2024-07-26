@@ -16,11 +16,9 @@ export interface ISubmitData {
 }
 
 export interface IModalDisplayProps {
-    isModalOpen: boolean,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export interface IGalleryDisplayProps {
-    isModalOpen: boolean,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
