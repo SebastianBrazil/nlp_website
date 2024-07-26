@@ -30,6 +30,12 @@ const Page = () => {
         }
     }
 
+    const pressedEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            submitLoginAttempt()
+        }
+    }
+
     return (
         <LayoutPublic>
             <div>
@@ -47,7 +53,7 @@ const Page = () => {
 
                             <div className='grid'>
                                 <label className='text-xl font-gilda text-center' htmlFor="password">Password</label>
-                                <input autoComplete='on' onChange={(e) => { setPasswordVar(e.target.value) }} value={passwordVar} placeholder='Password' name="password" id='password' className='pl-2 border border-black w-full font-gilda' type="password" />
+                                <input onKeyUp={(e) => pressedEnter(e)} autoComplete='on' onChange={(e) => { setPasswordVar(e.target.value) }} value={passwordVar} placeholder='Password' name="password" id='password' className='pl-2 border border-black w-full font-gilda' type="password" />
                             </div>
 
                             <div className='flex justify-center mt-10'>

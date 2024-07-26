@@ -26,6 +26,18 @@ const Page = () => {
                             <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
                         </div>
 
+                        <div className='flex justify-between my-10'>
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                        </div>
+
+                        <div className='flex justify-between'>
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                            <GalleryCardComponent setIsModalOpen={setIsModalOpen} />
+                        </div>
+
                     </main>
                 </div>
             </div>
