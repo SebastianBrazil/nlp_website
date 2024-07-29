@@ -9,6 +9,7 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
     const [singleTag, setSingleTag] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [photos, setPhotos] = useState<string[]>([]);
+    const [pageIterate, setPageIterate] = useState<number>(0);
 
     const closeModal = () => {
         props.setIsModalOpen(false);
@@ -65,20 +66,27 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
     useEffect(() => {
         const form = document.getElementById("galForm");
         const inputs = form?.querySelectorAll("input");
+        // const buttons = form?.querySelectorAll("button");
 
         inputs?.forEach(input => {
-            input.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
                 }
             });
         });
+
+        // buttons?.forEach(button => {
+        //     button.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //     });
+        // });
     }, []);
 
     return (
         <div className='fixed inset-0 bg-black z-20 bg-opacity-40'>
             <div className='bg-[#EEEEEE] z-30 w-[90%] h-[90%] absolute top-0 left-0 bottom-0 right-0 m-auto'>
-                <div className="w-full h-[90%] grid place-items-center">
+                <div className="w-full h-[95%] grid place-items-center">
                     <form id='galForm' action={() => submitAddGallery()}>
                         <div className='grid'>
                             <label className='text-xl font-gilda text-center' htmlFor="title">Title</label>
@@ -105,27 +113,31 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
                             })
                         }
 
-                        <div className='grid'>
+                        <div className='grid mb-5'>
                             <label className='text-xl font-gilda text-center' htmlFor="image">Add Imgs</label>
                             <input onChange={(e) => handleImg(e)} name="image" id='image' className='pl-2 border bg-white border-black w-full font-gilda' type="file" />
                         </div>
 
-                        {
-                            photos && photos.map((photo: string, index: number) => {
-                                return (
-                                    <img key={index} src={photo} alt="bruh" />
-                                )
-                            })
-                        }
+                        <div className='flex'>
+                            {
+                                photos.length > 1 && pageIterate > 0 && <button type='button' onClick={() => { setPageIterate(pageIterate - 1) }}>Go back</button>
+                            }
+                            {
+                                photos.length > 0 && <img className='mb-10' src={photos[pageIterate]} alt="bruh" />
+                            }
+                            {
+                                photos.length > 1 && pageIterate < photos.length - 1 && <button type='button' onClick={() => { setPageIterate(pageIterate + 1) }}>Go Forward</button>
+                            }
+                        </div>
 
-                        <div className='flex justify-center mt-10'>
+                        <div className='flex justify-center'>
                             <input type='submit' className='bg-gray-400 py-2 px-6 rounded-3xl font-gilda' />
                         </div>
                     </form>
                 </div>
 
                 <div className='grid items-center'>
-                    <button className='pt-8' onClick={() => { closeModal() }}>Close</button>
+                    <button className='' onClick={() => { closeModal() }}>Close</button>
                 </div>
             </div>
         </div>
