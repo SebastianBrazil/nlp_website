@@ -28,17 +28,8 @@ export interface IGalleryCreate {
     title: string, 
     description: string,
     tags: string[],
-
-    photo1: string,
-    photo2: string,
-    photo3: string,
-    photo4: string,
-    photo5: string,
-    photo6: string,
-    photo7: string,
-    photo8: string,
-    photo9: string,
-
+    photos: string[],
+    
     createdOn: Date,
     updatedOn: Date,
     IsPrivateNote: boolean
