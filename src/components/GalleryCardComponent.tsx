@@ -28,10 +28,10 @@ const GalleryCardComponent = (props: IGalleryDisplayProps) => {
                     </div>
             }
 
-            <p>{props.title}</p>
+            <p className='font-gilda text-black text-center pt-1'>{props.title}</p>
 
             <div className='grid items-center'>
-                <button onClick={() => { openModal() }} className='bg-[#372abc] text-white font-gilda tracking-wide mx-10 mt-3 rounded-full'>Click Here To Expand</button>
+                <button onClick={() => { openModal() }} className='bg-[#372abc] text-[#EEEEEE] font-gilda tracking-wide mx-10 mt-1 rounded-full'>Click Here To Expand</button>
             </div>
         </div>
     )

@@ -21,22 +21,21 @@ const ModalDisplayComponent = (props: IModalDisplayProps) => {
     return (
         <div className='fixed inset-0 bg-black z-20 bg-opacity-40'>
             <div className='bg-white z-30 w-[90%] h-[90%] absolute top-0 left-0 bottom-0 right-0 m-auto'>
-                <div className='flex'>
-                    {
-                        props.topPhotos.length > 1 && photoIter > 0 && <button type='button' onClick={() => { setPhotoIter(photoIter - 1) }}>Go back</button>
-                    }
+                <div className="w-full h-[74%] bg-[#222831] grid place-items-center">
                     {
                         props.topPhotos.length > 0 ?
-                            <div className="w-full h-[90%] bg-[#222831] grid place-items-center">
-                                <Image className="p-1 w-auto max-h-[800px]" width={1920} height={1080} loading="lazy" src={props.topPhotos[photoIter]} alt="Home Image" />
-                            </div>
+                            <Image className="p-1 w-auto max-h-[500px]" width={1920} height={1080} loading="lazy" src={props.topPhotos[photoIter]} alt="Home Image" />
                             :
-                            <div className="w-full h-[90%] bg-[#222831] grid place-items-center">
-                                <Image className="p-1 w-auto max-h-[800px]" width={1920} height={1080} loading="lazy" src={"/assets/heroPlaceholder.png"} alt="Home Image" />
-                            </div>
+                            <Image className="p-1 w-auto max-h-[500px]" width={1920} height={1080} loading="lazy" src={"/assets/heroPlaceholder.png"} alt="Home Image" />
+                    }
+                </div>
+
+                <div className='w-full h-[6%] bg-[#222831] flex justify-center'>
+                    {
+                        props.topPhotos.length > 1 && photoIter > 0 && <button className='font-gilda text-[#EEEEEE]' type='button' onClick={() => { setPhotoIter(photoIter - 1) }}>Go back</button>
                     }
                     {
-                        props.topPhotos.length > 1 && photoIter < props.topPhotos.length - 1 && <button type='button' onClick={() => { setPhotoIter(photoIter + 1) }}>Go Forward</button>
+                        props.topPhotos.length > 1 && photoIter < props.topPhotos.length - 1 && <button className='font-gilda text-[#EEEEEE]' type='button' onClick={() => { setPhotoIter(photoIter + 1) }}>Go Forward</button>
                     }
                 </div>
 

@@ -58,7 +58,7 @@ const Page = () => {
                                     <div className='grid grid-cols-3'>
                                         {photoGal.map((photo, index) => {
                                             return (
-                                                <div className='col-span-1' key={index}>
+                                                <div className='col-span-1 pb-5' key={index}>
                                                     <GalleryCardComponent setTopTitle={setTopTitle} setTopDescription={setTopDescription} setTopTags={setTopTags} setTopPhotos={setTopPhotos} setIsModalOpen={setIsModalOpen} title={photo.title} description={photo.description} tags={photo.tags} photos={photo.photos} />
                                                 </div>
                                             )

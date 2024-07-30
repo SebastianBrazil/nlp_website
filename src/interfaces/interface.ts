@@ -29,6 +29,10 @@ export interface IModalDisplayProps {
     topPhotos: string[],
 }
 
+export interface IModalCreateProps {
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>
+}
+
 export interface IGalleryDisplayProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
     setTopTitle: Dispatch<SetStateAction<string>>
