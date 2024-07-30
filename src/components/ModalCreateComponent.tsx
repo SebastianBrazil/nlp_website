@@ -9,7 +9,7 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
     const [singleTag, setSingleTag] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [photos, setPhotos] = useState<string[]>([]);
-    const [pageIterate, setPageIterate] = useState<number>(0);
+    const [imgIterate, setImgIterate] = useState<number>(0);
 
     const closeModal = () => {
         props.setIsModalOpen(false);
@@ -28,13 +28,21 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
 
             createdOn: time,
             updatedOn: time,
-            IsPrivateNote: false,
-            IsDeleted: false
+            isPrivateNote: false,
+            isDeleted: false
         }
 
         try {
             const response = await createNewGalleryGroup(submitData);
             console.log(response);
+            closeModal();
+
+            setTitle("");
+            setDescription("");
+            setSingleTag("");
+            setTags([]);
+            setPhotos([]);
+            setImgIterate(0);
         } catch (e) {
             console.log("Uh: " + e);
         }
@@ -42,7 +50,7 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
 
     const pressedEnterTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            addTags()
+            addTags();
         }
     }
 
@@ -66,7 +74,6 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
     useEffect(() => {
         const form = document.getElementById("galForm");
         const inputs = form?.querySelectorAll("input");
-        // const buttons = form?.querySelectorAll("button");
 
         inputs?.forEach(input => {
             input.addEventListener('keydown', (e) => {
@@ -75,12 +82,6 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
                 }
             });
         });
-
-        // buttons?.forEach(button => {
-        //     button.addEventListener('click', (e) => {
-        //         e.preventDefault();
-        //     });
-        // });
     }, []);
 
     return (
@@ -120,13 +121,13 @@ const ModalCreateComponent = (props: IModalDisplayProps) => {
 
                         <div className='flex'>
                             {
-                                photos.length > 1 && pageIterate > 0 && <button type='button' onClick={() => { setPageIterate(pageIterate - 1) }}>Go back</button>
+                                photos.length > 1 && imgIterate > 0 && <button type='button' onClick={() => { setImgIterate(imgIterate - 1) }}>Go back</button>
                             }
                             {
-                                photos.length > 0 && <img className='mb-10' src={photos[pageIterate]} alt="bruh" />
+                                photos.length > 0 && <img className='mb-10' src={photos[imgIterate]} alt="bruh" />
                             }
                             {
-                                photos.length > 1 && pageIterate < photos.length - 1 && <button type='button' onClick={() => { setPageIterate(pageIterate + 1) }}>Go Forward</button>
+                                photos.length > 1 && imgIterate < photos.length - 1 && <button type='button' onClick={() => { setImgIterate(imgIterate + 1) }}>Go Forward</button>
                             }
                         </div>
 

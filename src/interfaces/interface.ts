@@ -17,10 +17,29 @@ export interface ISubmitData {
 
 export interface IModalDisplayProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
+    setTopTitle: Dispatch<SetStateAction<string>>
+    setTopDescription: Dispatch<SetStateAction<string>>
+    setTopTags: Dispatch<SetStateAction<string[]>>
+    setTopPhotos: Dispatch<SetStateAction<string[]>>
+
+    isAdminEdit: boolean,
+    topTitle: string, 
+    topDescription: string,
+    topTags: string[],
+    topPhotos: string[],
 }
 
 export interface IGalleryDisplayProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
+    setTopTitle: Dispatch<SetStateAction<string>>
+    setTopDescription: Dispatch<SetStateAction<string>>
+    setTopTags: Dispatch<SetStateAction<string[]>>
+    setTopPhotos: Dispatch<SetStateAction<string[]>>
+
+    title: string, 
+    description: string,
+    tags: string[],
+    photos: string[],
 }
 
 export interface IGalleryCreate {
@@ -29,9 +48,8 @@ export interface IGalleryCreate {
     description: string,
     tags: string[],
     photos: string[],
-    
     createdOn: Date,
     updatedOn: Date,
-    IsPrivateNote: boolean
-    IsDeleted: boolean
+    isPrivateNote: boolean,
+    isDeleted: boolean
 }

@@ -37,3 +37,9 @@ export const createNewGalleryGroup = async (passedData: IGalleryCreate) => {
     const data: IToken = await res.json();
     return data;
 };
+
+export const getGalleryPage = async (pageCount: string) => {
+    const res = await fetch(url + "NLP_Gallery/GetGalleryItemsPerPage/" + pageCount);
+    const data = await res.json();
+    return data;
+}
