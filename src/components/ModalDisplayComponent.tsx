@@ -51,7 +51,7 @@ const ModalDisplayComponent = (props: IModalDisplayProps) => {
                 </div>
 
                 <div className='grid items-center'>
-                    <button className='pt-8' onClick={() => { closeModal() }}>Close</button>
+                    <button className='' onClick={() => { closeModal() }}>Close</button>
                 </div>
             </div>
         </div>

@@ -32,6 +32,10 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
             isDeleted: false
         }
 
+        if(props.isPrivate === true){
+            submitData.isPrivateNote = true;
+        }
+
         try {
             const response = await createNewGalleryGroup(submitData);
             closeModal();

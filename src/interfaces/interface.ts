@@ -30,6 +30,7 @@ export interface IModalDisplayProps {
 }
 
 export interface IModalCreateProps {
+    isPrivate: boolean,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 

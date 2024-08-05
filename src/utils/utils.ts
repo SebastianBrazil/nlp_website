@@ -43,3 +43,21 @@ export const getGalleryPage = async (pageCount: string) => {
     const data = await res.json();
     return data;
 }
+
+export const getGalleryPageAmount = async () => {
+    const res = await fetch(url + "NLP_Gallery/GetGalleryPageAmount");
+    const data = await res.json();
+    return data;
+}
+
+export const getJobNotesPage = async (pageCount: string) => {
+    const res = await fetch(url + "NLP_Gallery/GetPersonalNoteItemsPerPage/" + pageCount);
+    const data = await res.json();
+    return data;
+}
+
+export const getJobNotesPageAmount = async () => {
+    const res = await fetch(url + "NLP_Gallery/GetPersonalNotePageAmount");
+    const data = await res.json();
+    return data;
+}

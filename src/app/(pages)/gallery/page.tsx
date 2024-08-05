@@ -5,7 +5,7 @@ import HeroComponent from '@/components/HeroComponent'
 import LayoutPublic from '@/components/LayoutPublic'
 import ModalDisplayComponent from '@/components/ModalDisplayComponent'
 import { IGalleryCreate } from '@/interfaces/interface'
-import { getGalleryPage } from '@/utils/utils'
+import { getGalleryPage, getGalleryPageAmount } from '@/utils/utils'
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
@@ -13,6 +13,7 @@ const Page = () => {
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
     const [photoGal, setPhotoGal] = useState<IGalleryCreate[]>();
     const [pageCount, setPageCount] = useState<number>(1);
+    const [pageAmount, setPageAmount] = useState<number>(1);
 
     const [topTitle, setTopTitle] = useState<string>("");
     const [topDescription, setTopDescription] = useState<string>("");
@@ -27,11 +28,19 @@ const Page = () => {
                     let swappedData: IGalleryCreate[] = [];
 
                     for (let i = retrievedData.length; i > 0; i--) {
-                        swappedData.push(retrievedData[i-1])
+                        swappedData.push(retrievedData[i - 1])
                     }
 
                     setPhotoGal(swappedData);
                 }
+
+                // const pAmount: number = await getGalleryPageAmount();
+                // console.log(pAmount)
+                // if (pAmount > 0) {
+                //     setPageAmount(pAmount);
+                //     console.log("Set Amount")
+                // }
+
                 setIsPhotosLoaded(true);
             } catch (e) {
                 alert(e);
@@ -40,6 +49,20 @@ const Page = () => {
 
         asyncGet();
     }, [pageCount])
+
+    const increasePageCount = () => {
+        if (pageCount < pageAmount) {
+            setPageCount(pageCount + 1);
+            console.log("increased")
+        }
+    }
+
+    const decreasePageCount = () => {
+        if (pageCount > 1) {
+            setPageCount(pageCount - 1);
+            console.log("decreased")
+        }
+    }
 
     return (
         <LayoutPublic>
@@ -55,14 +78,20 @@ const Page = () => {
                         {
                             isPhotosLoaded ?
                                 photoGal ?
-                                    <div className='grid grid-cols-3'>
+                                    <div className='grid grid-cols-11'>
                                         {photoGal.map((photo, index) => {
                                             return (
-                                                <div className='col-span-1 pb-5' key={index}>
+                                                <div className='col-span-1' key={index}>
                                                     <GalleryCardComponent setTopTitle={setTopTitle} setTopDescription={setTopDescription} setTopTags={setTopTags} setTopPhotos={setTopPhotos} setIsModalOpen={setIsModalOpen} title={photo.title} description={photo.description} tags={photo.tags} photos={photo.photos} />
                                                 </div>
                                             )
                                         })}
+
+                                        {/* <div className='flex'>
+                                            <button onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                            <p>{String(pageCount)}</p>
+                                            <button onClick={() => { increasePageCount() }}>{">"}</button>
+                                        </div> */}
                                     </div>
                                     :
                                     <div>
