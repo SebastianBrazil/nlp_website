@@ -34,12 +34,10 @@ const Page = () => {
                     setPhotoGal(swappedData);
                 }
 
-                // const pAmount: number = await getGalleryPageAmount();
-                // console.log(pAmount)
-                // if (pAmount > 0) {
-                //     setPageAmount(pAmount);
-                //     console.log("Set Amount")
-                // }
+                const pAmount: number = await getGalleryPageAmount();
+                if (pAmount > 0) {
+                    setPageAmount(pAmount);
+                }
 
                 setIsPhotosLoaded(true);
             } catch (e) {
