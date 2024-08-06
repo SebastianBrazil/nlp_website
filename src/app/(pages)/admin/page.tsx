@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import LayoutPublic from '@/components/LayoutPublic'
+import LayoutComponent from '@/components/LayoutComponent';
 import { ISubmitData, IToken } from '@/interfaces/interface';
 import { login } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
@@ -50,34 +50,32 @@ const Page = () => {
     }, []);
 
     return (
-        <LayoutPublic>
-            <div>
-                <div className="flex justify-center my-10">
-                    <main className="w-[70%] grid justify-center">
+        <LayoutComponent passState="public" isHero={false} heroTags="" heroSrc="n/a" heroAlt="No Image" >
+            <div className="flex justify-center my-10">
+                <main className="w-[70%] grid justify-center">
 
-                        <p className='text-2xl font-gilda text-center pb-1'>Admin Login</p>
-                        <p className='font-gilda text-center pb-10'>If you got here by accident, feel free to return to Home</p>
+                    <p className='text-2xl font-gilda text-center pb-1'>Admin Login</p>
+                    <p className='font-gilda text-center pb-10'>If you got here by accident, feel free to return to Home</p>
 
-                        <form id='loginForm' action={() => submitLoginAttempt()}>
-                            <div className='grid'>
-                                <label className='text-xl font-gilda text-center' htmlFor="username">Username</label>
-                                <input autoComplete='on' onChange={(e) => { setUsernameVar(e.target.value) }} value={usernameVar} placeholder='Username' name="username" id='username' className='pl-2 border border-black w-full font-gilda' type="text" />
-                            </div>
+                    <form id='loginForm' action={() => submitLoginAttempt()}>
+                        <div className='grid'>
+                            <label className='text-xl font-gilda text-center' htmlFor="username">Username</label>
+                            <input autoComplete='on' onChange={(e) => { setUsernameVar(e.target.value) }} value={usernameVar} placeholder='Username' name="username" id='username' className='pl-2 border border-black w-full font-gilda' type="text" />
+                        </div>
 
-                            <div className='grid'>
-                                <label className='text-xl font-gilda text-center' htmlFor="password">Password</label>
-                                <input onKeyUp={(e) => pressedEnterPassword(e)} autoComplete='on' onChange={(e) => { setPasswordVar(e.target.value) }} value={passwordVar} placeholder='Password' name="password" id='password' className='pl-2 border border-black w-full font-gilda' type="password" />
-                            </div>
+                        <div className='grid'>
+                            <label className='text-xl font-gilda text-center' htmlFor="password">Password</label>
+                            <input onKeyUp={(e) => pressedEnterPassword(e)} autoComplete='on' onChange={(e) => { setPasswordVar(e.target.value) }} value={passwordVar} placeholder='Password' name="password" id='password' className='pl-2 border border-black w-full font-gilda' type="password" />
+                        </div>
 
-                            <div className='flex justify-center mt-10'>
-                                <button type='submit' className='bg-gray-400 py-2 px-6 rounded-3xl font-gilda'>Enter</button>
-                            </div>
-                        </form>
+                        <div className='flex justify-center mt-10'>
+                            <button type='submit' className='bg-gray-400 py-2 px-6 rounded-3xl font-gilda'>Enter</button>
+                        </div>
+                    </form>
 
-                    </main>
-                </div>
+                </main>
             </div>
-        </LayoutPublic>
+        </LayoutComponent>
     )
 }
 

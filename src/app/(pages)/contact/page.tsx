@@ -1,14 +1,9 @@
-"use client"
-
-import HeroComponent from '@/components/HeroComponent'
-import LayoutPublic from '@/components/LayoutPublic'
+import LayoutComponent from '@/components/LayoutComponent'
 import React from 'react'
 
 const Page = () => {
     return (
-        <LayoutPublic>
-            <div>
-                <HeroComponent classTags={""} src={"/assets/heroPlaceholder.png"} alt={"Hero Timage"} />
+        <LayoutComponent isHero={true} passState="public" heroTags="" heroSrc="/assets/heroPlaceholder.png" heroAlt="Hero Image" >
                 <div className="flex justify-center my-10">
                     <main className="w-[70%]">
 
@@ -19,8 +14,7 @@ const Page = () => {
 
                     </main>
                 </div>
-            </div>
-        </LayoutPublic>
+        </LayoutComponent>
     )
 }
 

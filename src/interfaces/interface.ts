@@ -15,18 +15,11 @@ export interface ISubmitData {
     password: string
 }
 
-export interface IModalDisplayProps {
-    setIsModalOpen: Dispatch<SetStateAction<boolean>>
-    setTopTitle: Dispatch<SetStateAction<string>>
-    setTopDescription: Dispatch<SetStateAction<string>>
-    setTopTags: Dispatch<SetStateAction<string[]>>
-    setTopPhotos: Dispatch<SetStateAction<string[]>>
-
-    isAdminEdit: boolean,
-    topTitle: string, 
-    topDescription: string,
-    topTags: string[],
-    topPhotos: string[],
+export interface IGalleryDisplayProps {
+    displayedTitle: string, 
+    displayedDescription: string,
+    displayedTags: string[],
+    displayedPhotos: string[]
 }
 
 export interface IModalCreateProps {
@@ -34,17 +27,16 @@ export interface IModalCreateProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export interface IGalleryDisplayProps {
-    setIsModalOpen: Dispatch<SetStateAction<boolean>>
-    setTopTitle: Dispatch<SetStateAction<string>>
-    setTopDescription: Dispatch<SetStateAction<string>>
-    setTopTags: Dispatch<SetStateAction<string[]>>
-    setTopPhotos: Dispatch<SetStateAction<string[]>>
+export interface IGalleryCardProps {
+    setDisplayedTitle: Dispatch<SetStateAction<string>>
+    setDisplayedDescription: Dispatch<SetStateAction<string>>
+    setDisplayedTags: Dispatch<SetStateAction<string[]>>
+    setDisplayedPhotos: Dispatch<SetStateAction<string[]>>
 
     title: string, 
     description: string,
     tags: string[],
-    photos: string[],
+    photos: string[]
 }
 
 export interface IGalleryCreate {

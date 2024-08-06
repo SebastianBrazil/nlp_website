@@ -18,3 +18,7 @@
         src: url(../../public/fonts/BeauRivage-Regular.ttf);
     }
 }
+
+.galleryScroll {
+    cursor: ew-resize;
+}

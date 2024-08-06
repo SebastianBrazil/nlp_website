@@ -1,24 +1,22 @@
 "use client"
 
 import GalleryCardComponent from '@/components/GalleryCardComponent'
-import HeroComponent from '@/components/HeroComponent'
-import LayoutPublic from '@/components/LayoutPublic'
-import ModalDisplayComponent from '@/components/ModalDisplayComponent'
+import LayoutComponent from '@/components/LayoutComponent'
+import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
 import { IGalleryCreate } from '@/interfaces/interface'
 import { getGalleryPage, getGalleryPageAmount } from '@/utils/utils'
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
     const [photoGal, setPhotoGal] = useState<IGalleryCreate[]>();
     const [pageCount, setPageCount] = useState<number>(1);
     const [pageAmount, setPageAmount] = useState<number>(1);
 
-    const [topTitle, setTopTitle] = useState<string>("");
-    const [topDescription, setTopDescription] = useState<string>("");
-    const [topTags, setTopTags] = useState<string[]>([]);
-    const [topPhotos, setTopPhotos] = useState<string[]>([]);
+    const [displayedTitle, setDisplayedTitle] = useState<string>("");
+    const [displayedDescription, setDisplayedDescription] = useState<string>("");
+    const [displayedTags, setDisplayedTags] = useState<string[]>([]);
+    const [displayedPhotos, setDisplayedPhotos] = useState<string[]>([]);
 
     useEffect(() => {
         const asyncGet = async () => {
@@ -32,6 +30,11 @@ const Page = () => {
                     }
 
                     setPhotoGal(swappedData);
+
+                    setDisplayedTitle(swappedData[0].title)
+                    setDisplayedPhotos(swappedData[0].photos);
+                    setDisplayedDescription(swappedData[0].description);
+                    setDisplayedTags(swappedData[0].tags);
                 }
 
                 const pAmount: number = await getGalleryPageAmount();
@@ -63,48 +66,57 @@ const Page = () => {
     }
 
     return (
-        <LayoutPublic>
-            <div>
-                <HeroComponent classTags={""} src={"/assets/heroPlaceholder.png"} alt={"Hero Timage"} />
-                <div className="flex justify-center my-10">
-                    <main className="w-[70%] max-w-[1344px]">
+        <LayoutComponent isHero={true} passState="public" heroTags="" heroSrc="/assets/heroPlaceholder.png" heroAlt="Hero Image" >
+            <div className="flex justify-center my-10">
+                <main className="w-full max-w-[1920px]">
 
-                        <div className="flex justify-center mb-10">
-                            <p className="text-2xl font-gilda">Here you can find examples of the work NLP has done for its clients.</p>
-                        </div>
+                    <div className="flex justify-center mb-10">
+                        <p className="text-2xl font-gilda">Here you can find examples of the work NLP has done for its clients.</p>
+                    </div>
 
-                        {
-                            isPhotosLoaded ?
-                                photoGal ?
-                                    <div className='grid grid-cols-11'>
-                                        {photoGal.map((photo, index) => {
-                                            return (
-                                                <div className='col-span-1' key={index}>
-                                                    <GalleryCardComponent setTopTitle={setTopTitle} setTopDescription={setTopDescription} setTopTags={setTopTags} setTopPhotos={setTopPhotos} setIsModalOpen={setIsModalOpen} title={photo.title} description={photo.description} tags={photo.tags} photos={photo.photos} />
-                                                </div>
-                                            )
-                                        })}
+                    {
+                        isPhotosLoaded ?
+                            photoGal ?
+                                <div>
+                                    <div className='flex justify-center'>
+                                        <div className='grid w-[95%] grid-cols-11'>
+                                            {photoGal.map((photoGroup, index) => {
+                                                return (
+                                                    <div className='col-span-1' key={index}>
+                                                        <GalleryCardComponent setDisplayedTitle={setDisplayedTitle} setDisplayedDescription={setDisplayedDescription} setDisplayedTags={setDisplayedTags} setDisplayedPhotos={setDisplayedPhotos} title={photoGroup.title} description={photoGroup.description} tags={photoGroup.tags} photos={photoGroup.photos} />
+                                                    </div>
+                                                )
+                                            })}
 
-                                        {/* <div className='flex'>
-                                            <button onClick={() => { decreasePageCount() }}>{"<"}</button>
-                                            <p>{String(pageCount)}</p>
-                                            <button onClick={() => { increasePageCount() }}>{">"}</button>
-                                        </div> */}
+                                            {/* <div className='flex'>
+                                                    <button onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                    <p>{String(pageCount)}</p>
+                                                    <button onClick={() => { increasePageCount() }}>{">"}</button>
+                                                </div> */}
+                                        </div>
                                     </div>
-                                    :
-                                    <div>
-                                        <p>There are no photos available right now</p>
-                                    </div>
+                                    {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
+                                </div>
                                 :
                                 <div>
-                                    <p>Loading Gallery...</p>
+                                    <div className='flex justify-center'>
+                                        <div className='w-[95%]'>
+                                            <p className='text-center'>There are no photos avaiable right now</p>
+                                        </div>
+                                    </div>
                                 </div>
-                        }
-                    </main>
-                </div>
+                            :
+                            <div>
+                                <div className='flex justify-center'>
+                                    <div className='w-[95%]'>
+                                        <p className='text-center'>Loading Gallery...</p>
+                                    </div>
+                                </div>
+                            </div>
+                    }
+                </main>
             </div>
-            {isModalOpen && topTitle !== "" && topDescription !== "" && topTags.length !== 0 && topPhotos.length !== 0 && <ModalDisplayComponent setTopTitle={setTopTitle} setTopDescription={setTopDescription} setTopTags={setTopTags} setTopPhotos={setTopPhotos} setIsModalOpen={setIsModalOpen} isAdminEdit={false} topTitle={topTitle} topDescription={topDescription} topTags={topTags} topPhotos={topPhotos} />}
-        </LayoutPublic>
+        </LayoutComponent>
     )
 }
 
