@@ -97,7 +97,7 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
     return (
         <div className='flex justify-center'>
             <div className='w-[95%] py-5'>
-                <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-auto">
+                <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-auto galleryScroll">
                     {
                         props.displayedPhotos.length === 0 ?
                             <Image className="px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
@@ -105,16 +105,15 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                             props.displayedPhotos.length === 1 ?
                                 props.displayedPhotos.map((photo, index) => {
                                     return (
-                                        <div key={index} className='w-full flex justify-center overflow-x-auto'>
-                                            <Image className="px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
-                                        </div>
+                                        <Image key={index} className="mr-auto ml-auto w-[50%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                     )
                                 })
                                 :
-                                props.displayedPhotos.length > 1 ?
+                                props.displayedPhotos ?
                                     props.displayedPhotos.map((photo, index) => {
                                         return (
-                                            <Image key={index} className="galleryScroll px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
+                                            <Image key={index} className="mr-auto ml-auto w-[50%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
+                                            // <Image key={index} className="w-auto px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                         )
                                     })
                                     :
@@ -133,9 +132,9 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                                 })
                             }
                         </div>
-                        
+
                         <p className='text-5xl font-gilda pt-6'>Title: {props.displayedTitle}</p>
-                        
+
                         {
                             props.displayedDescription === "" ?
                                 <p className='text-3xl pt-6 font-gilda'>Description: No Description</p>

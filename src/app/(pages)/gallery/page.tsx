@@ -71,7 +71,7 @@ const Page = () => {
                 <main className="w-full max-w-[1920px]">
 
                     <div className="flex justify-center mb-10">
-                        <p className="text-2xl font-gilda">Here you can find examples of the work NLP has done for its clients.</p>
+                        <p className="text-4xl font-gilda">Here you can find examples of the work NLP has done for its clients.</p>
                     </div>
 
                     {
