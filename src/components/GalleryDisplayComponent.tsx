@@ -100,24 +100,16 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                 <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-auto galleryScroll">
                     {
                         props.displayedPhotos.length === 0 ?
-                            <Image className="px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
+                            <Image className="block mx-auto w-[5%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
                             :
-                            props.displayedPhotos.length === 1 ?
+                            props.displayedPhotos.length > 0 ?
                                 props.displayedPhotos.map((photo, index) => {
                                     return (
-                                        <Image key={index} className="mr-auto ml-auto w-[50%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
+                                        <Image key={index} className="block mx-auto w-[5%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                     )
                                 })
                                 :
-                                props.displayedPhotos ?
-                                    props.displayedPhotos.map((photo, index) => {
-                                        return (
-                                            <Image key={index} className="mr-auto ml-auto w-[50%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
-                                            // <Image key={index} className="w-auto px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
-                                        )
-                                    })
-                                    :
-                                    <p className='w-full text-[#EEEEEE] font-gilda text-5xl text-center'>Error Displaying Gallery Images</p>
+                                <p className='w-full text-[#EEEEEE] font-gilda text-5xl text-center'>Error Displaying Gallery Images</p>
                     }
                 </div>
 
