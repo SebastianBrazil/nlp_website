@@ -101,7 +101,7 @@ const Page = () => {
                                 <div>
                                     <div className='flex justify-center'>
                                         <div className='w-[95%]'>
-                                            <p className='text-center'>There are no photos avaiable right now</p>
+                                            <p className='text-center text-2xl font-gilda'>There are no photos avaiable right now</p>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@ const Page = () => {
                             <div>
                                 <div className='flex justify-center'>
                                     <div className='w-[95%]'>
-                                        <p className='text-center'>Loading Gallery...</p>
+                                        <p className='text-center text-2xl font-gilda'>Loading Gallery...</p>
                                     </div>
                                 </div>
                             </div>

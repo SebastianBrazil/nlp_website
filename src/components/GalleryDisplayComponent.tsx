@@ -97,16 +97,16 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
     return (
         <div className='flex justify-center'>
             <div className='w-[95%] py-5'>
-                <div ref={containerRef} className="w-full h-[800px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-scroll">
+                <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-auto">
                     {
                         props.displayedPhotos.length === 0 ?
-                            <Image className="px-5 w-auto h-[760px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
+                            <Image className="px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
                             :
                             props.displayedPhotos.length === 1 ?
                                 props.displayedPhotos.map((photo, index) => {
                                     return (
                                         <div key={index} className='w-full flex justify-center overflow-x-auto'>
-                                            <Image className="px-5 w-auto h-[760px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
+                                            <Image className="px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                         </div>
                                     )
                                 })
@@ -114,7 +114,7 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                                 props.displayedPhotos.length > 1 ?
                                     props.displayedPhotos.map((photo, index) => {
                                         return (
-                                            <Image key={index} className="galleryScroll px-5 w-auto h-[760px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
+                                            <Image key={index} className="galleryScroll px-5 w-auto h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                         )
                                     })
                                     :
@@ -122,24 +122,27 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                     }
                 </div>
 
-                <p>Title: {props.displayedTitle}</p>
-                {
-                    props.displayedDescription === "" ?
-                        <p>Description: No Description</p>
-                        :
-                        <p>Description: {props.displayedDescription}</p>
-                }
-                <div className='flex'>
-                    <p>Tags:</p>
-                    {props.displayedTags.length > 0 ?
-                        props.displayedTags.map((tag, index) => {
-                            return (
-                                <p className='ml-1' key={index}>{tag}</p>
-                            )
-                        })
-                        :
-                        <p>N/A</p>
-                    }
+                <div className='flex justify-center'>
+                    <div className='w-[70%]'>
+                        <div className='flex h-auto flex-wrap'>
+                            {props.displayedTags.length > 0 &&
+                                props.displayedTags.map((tag, index) => {
+                                    return (
+                                        <p className='mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] text-[#222831] border-2 border-black text-3xl font-gilda' key={index}>{tag}</p>
+                                    )
+                                })
+                            }
+                        </div>
+                        
+                        <p className='text-5xl font-gilda pt-6'>Title: {props.displayedTitle}</p>
+                        
+                        {
+                            props.displayedDescription === "" ?
+                                <p className='text-3xl pt-6 font-gilda'>Description: No Description</p>
+                                :
+                                <p className='text-3xl pt-6 font-gilda'>Description: {props.displayedDescription}</p>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

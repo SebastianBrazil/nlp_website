@@ -4,11 +4,6 @@
 
 @layer components {
     @font-face {
-        font-family: martel;
-        src: url(../../public/fonts/Martel-Regular.ttf);
-    }
-
-    @font-face {
         font-family: guilda;
         src: url(../../public/fonts/GildaDisplay-Regular.ttf);
     }
