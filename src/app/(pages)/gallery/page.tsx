@@ -95,7 +95,7 @@ const Page = () => {
                                                 </div> */}
                                         </div>
                                     </div>
-                                    {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
+                                    {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent modifyShow={false} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
                                 </div>
                                 :
                                 <div>

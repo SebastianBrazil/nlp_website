@@ -51,6 +51,7 @@ const Page = () => {
                 alert(e);
             }
         }
+        
         if (checkToken === true) {
             asyncGet();
         } else {
@@ -142,7 +143,7 @@ const Page = () => {
                                                         </div> */}
                                                     </div>
                                                 </div>
-                                                {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
+                                                {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent modifyShow={true} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
                                             </div>
                                             :
                                             <div>

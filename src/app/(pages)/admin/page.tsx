@@ -81,7 +81,7 @@ const Page = () => {
                         </div>
 
                         <div className='flex justify-center mt-4'>
-                            <button type='submit' className='bg-gray-400 py-2 px-6 rounded-3xl font-gilda'>Enter</button>
+                            <button type='submit' className='cursor-pointer bg-[#0e2b8d] text-[#EEEEEE] py-2 px-6 rounded-3xl text-2xl font-gilda'>Enter</button>
                         </div>
                     </form>
 

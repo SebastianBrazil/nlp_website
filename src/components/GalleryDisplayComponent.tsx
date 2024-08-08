@@ -116,22 +116,33 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                 <div className='flex justify-center'>
                     <div className='w-[70%]'>
                         <div className='flex h-auto flex-wrap'>
-                            {props.displayedTags.length > 0 &&
+                            {props.displayedTags.length > 0 ?
                                 props.displayedTags.map((tag, index) => {
                                     return (
                                         <p className='mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] text-[#222831] border-2 border-black text-3xl font-gilda' key={index}>{tag}</p>
                                     )
                                 })
+                                :
+                                <p className='mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] text-[#222831] border-2 border-black text-3xl font-gilda'>Untagged</p>
                             }
                         </div>
 
-                        <p className='text-5xl font-gilda pt-6'>Title: {props.displayedTitle}</p>
-
+                        {
+                            props.displayedTitle === "" ?
+                                <p className='text-5xl font-gilda pt-6'>Title: No Title</p>
+                                :
+                                <p className='text-5xl font-gilda pt-6'>Title: {props.displayedTitle}</p>
+                        }
                         {
                             props.displayedDescription === "" ?
                                 <p className='text-3xl pt-6 font-gilda'>Description: No Description</p>
                                 :
                                 <p className='text-3xl pt-6 font-gilda'>Description: {props.displayedDescription}</p>
+                        }
+
+                        {
+                            props.modifyShow === true &&
+                            <button>Modify</button>
                         }
                     </div>
                 </div>

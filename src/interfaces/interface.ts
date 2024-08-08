@@ -19,7 +19,8 @@ export interface IGalleryDisplayProps {
     displayedTitle: string, 
     displayedDescription: string,
     displayedTags: string[],
-    displayedPhotos: string[]
+    displayedPhotos: string[],
+    modifyShow: boolean
 }
 
 export interface IModalCreateProps {
@@ -28,10 +29,10 @@ export interface IModalCreateProps {
 }
 
 export interface IGalleryCardProps {
-    setDisplayedTitle: Dispatch<SetStateAction<string>>
-    setDisplayedDescription: Dispatch<SetStateAction<string>>
-    setDisplayedTags: Dispatch<SetStateAction<string[]>>
-    setDisplayedPhotos: Dispatch<SetStateAction<string[]>>
+    setDisplayedTitle: Dispatch<SetStateAction<string>>,
+    setDisplayedDescription: Dispatch<SetStateAction<string>>,
+    setDisplayedTags: Dispatch<SetStateAction<string[]>>,
+    setDisplayedPhotos: Dispatch<SetStateAction<string[]>>,
 
     title: string, 
     description: string,
