@@ -3,6 +3,7 @@
 import GalleryCardComponent from '@/components/GalleryCardComponent'
 import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
 import LayoutComponent from '@/components/LayoutComponent'
+import ModalCreateComponent from '@/components/ModalCreateComponent'
 import { IGalleryCreate } from '@/interfaces/interface'
 import { getGalleryPage, getGalleryPageAmount } from '@/utils/utils'
 import React, { useEffect, useState } from 'react'
@@ -10,7 +11,7 @@ import React, { useEffect, useState } from 'react'
 const Page = () => {
     const [checkToken, setCheckToken] = useState<boolean>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    
+
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
     const [photoGal, setPhotoGal] = useState<IGalleryCreate[]>();
     const [pageCount, setPageCount] = useState<number>(1);
@@ -109,14 +110,16 @@ const Page = () => {
             {
                 checkToken === true &&
                 <LayoutComponent passState="admin" isHero={false} heroTags="" heroSrc="n/a" heroAlt="No Image" >
-                    {/* {isModalOpen && <ModalCreateComponent isPrivate={false} setIsModalOpen={setIsModalOpen} />} */}
+                    {isModalOpen && <ModalCreateComponent isPrivate={false} setIsModalOpen={setIsModalOpen} />}
 
                     <div>
                         <div className="flex justify-center my-10">
-                            <main className="w-[70%]">
-                                <p className='text-xl font-gilda text-center'>Admin Gallery</p>
+                            <main className="w-full max-w-[1920px]">
+                                <p className='text-5xl font-gilda text-center'>Admin Gallery</p>
 
-                                <button onClick={() => { openCreateModal() }} className='bg-slate-400 mb-10'>Create Photo Grouping</button>
+                                <div className='flex justify-center my-6'>
+                                    <button onClick={() => { openCreateModal() }} className='py-2 px-4 rounded-2xl bg-[#EEEEEE] text-[#222831] border-2 border-black text-2xl font-gilda'>Create Photo Grouping</button>
+                                </div>
 
                                 {
                                     isPhotosLoaded ?

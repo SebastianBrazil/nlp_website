@@ -61,13 +61,13 @@ const Page = () => {
                     <p className='font-gilda text-3xl text-center pb-10'>If you got here by accident, feel free to return to Home</p>
 
                     <form id='loginForm' action={() => submitLoginAttempt()}>
-                        <div className='grid justify-center'>
-                            <label className='text-3xl font-gilda text-center' htmlFor="username">Username</label>
+                        <div className='grid justify-center mb-6'>
+                            <label className='text-3xl mb-2 font-gilda text-center' htmlFor="username">Username</label>
                             <input autoComplete='on' onChange={(e) => { setUsernameVar(e.target.value); setLoginFailed(false); setTokenFailed(false); }} value={usernameVar} placeholder='Username' name="username" id='username' className='pl-2 border text-2xl border-black w-64 font-gilda' type="text" />
                         </div>
 
                         <div className='grid justify-center'>
-                            <label className='text-3xl font-gilda text-center' htmlFor="password">Password</label>
+                            <label className='text-3xl mb-2 font-gilda text-center' htmlFor="password">Password</label>
                             <input onKeyUp={(e) => pressedEnterPassword(e)} autoComplete='on' onChange={(e) => { setPasswordVar(e.target.value); setLoginFailed(false); setTokenFailed(false); }} value={passwordVar} placeholder='Password' name="password" id='password' className='pl-2 border text-2xl border-black w-64 font-gilda' type="password" />
                         </div>
 

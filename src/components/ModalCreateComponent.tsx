@@ -2,6 +2,7 @@ import { IGalleryCreate, IModalCreateProps } from '@/interfaces/interface'
 import { createNewGalleryGroup } from '@/utils/utils';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
+import GalleryDisplayComponent from './GalleryDisplayComponent';
 
 const ModalCreateComponent = (props: IModalCreateProps) => {
     const [title, setTitle] = useState<string>("");
@@ -88,35 +89,23 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
     }, []);
 
     return (
-        <div className='fixed inset-0 bg-black z-20 bg-opacity-40'>
-            <div className='bg-[#EEEEEE] z-30 w-[90%] h-[90%] absolute top-0 left-0 bottom-0 right-0 m-auto'>
-                <div className="w-full h-[95%] grid place-items-center">
+        <div className='fixed overflow-scroll inset-0 bg-black z-20 bg-opacity-40'>
+            <div className='bg-[#EEEEEE] z-30 w-[90%] left-0 right-0 my-20 mx-auto'>
+                <div className="w-full h-[95%] grid">
                     <form id='galForm' action={() => submitAddGallery()}>
                         <div className='grid'>
                             <label className='text-xl font-gilda text-center' htmlFor="title">Title</label>
                             <input onChange={(e) => { setTitle(e.target.value) }} value={title} placeholder='Title' name="title" id='title' className='pl-2 border border-black w-full font-gilda' type="text" />
                         </div>
-                        {/* <p>{title}</p> */}
 
                         <div className='grid'>
                             <label className='text-xl font-gilda text-center' htmlFor="description">Description</label>
                             <input onChange={(e) => { setDescription(e.target.value) }} value={description} placeholder='Description' name="description" id='description' className='pl-2 border border-black w-full font-gilda' type="text" />
                         </div>
-                        {/* <p>{description}</p> */}
 
                         <div className='grid'>
                             <label className='text-xl font-gilda text-center' htmlFor="tag">Tags</label>
                             <input onChange={(e) => { setSingleTag(e.target.value) }} onKeyUp={(e) => pressedEnterTag(e)} value={singleTag} placeholder='Tags' name="tag" id='tag' className='pl-2 border border-black w-full font-gilda' type="text" />
-                        </div>
-
-                        <div className='flex'>
-                            {
-                                tags && tags.map((tag: string, index: number) => {
-                                    return (
-                                        <p className='pr-1 font-gilda' key={index}>{tag}</p>
-                                    )
-                                })
-                            }
                         </div>
 
                         <div className='grid mb-5'>
@@ -124,7 +113,7 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
                             <input onChange={(e) => handleImg(e)} name="image" id='image' className='pl-2 border bg-white border-black w-full font-gilda' type="file" />
                         </div>
 
-                        <div className='flex'>
+                        {/* <div className='flex'>
                             {
                                 photos.length > 1 && imgIterate > 0 && <button type='button' onClick={() => { setImgIterate(imgIterate - 1) }}>Go back</button>
                             }
@@ -134,7 +123,9 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
                             {
                                 photos.length > 1 && imgIterate < photos.length - 1 && <button type='button' onClick={() => { setImgIterate(imgIterate + 1) }}>Go Forward</button>
                             }
-                        </div>
+                        </div> */}
+
+                        <GalleryDisplayComponent displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
 
                         <div className='flex justify-center'>
                             <input type='submit' className='bg-gray-400 py-2 px-6 rounded-3xl font-gilda' />
