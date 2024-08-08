@@ -42,7 +42,8 @@ const Page = () => {
                     <div className="flex justify-center my-10">
                         <main className="w-[70%]">
 
-                            <p className='text-xl font-gilda text-center'>Admin Landing Page</p>
+                            <p className='text-5xl font-gilda text-center'>Admin Landing Page</p>
+                            <p className='text-3xl pt-5 font-gilda text-center'>Signed in successfully - Welcome!</p>
 
                         </main>
                     </div>
