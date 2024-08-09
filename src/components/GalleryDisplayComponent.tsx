@@ -142,7 +142,7 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
 
                         {
                             props.modifyShow === true &&
-                            <button>Modify</button>
+                            <button className='bg-[#0e2b8d] cursor-pointer mt-6 text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Modify</button>
                         }
                     </div>
                 </div>

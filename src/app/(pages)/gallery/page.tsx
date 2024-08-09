@@ -88,14 +88,18 @@ const Page = () => {
                                                 )
                                             })}
 
-                                            {/* <div className='flex'>
+                                            <div className='col-span-2'>
+                                                <div className='flex'>
                                                     <button onClick={() => { decreasePageCount() }}>{"<"}</button>
                                                     <p>{String(pageCount)}</p>
                                                     <button onClick={() => { increasePageCount() }}>{">"}</button>
-                                                </div> */}
+                                                </div>
+                                                <input className='w-full border border-black' type="text" />
+                                            </div>
                                         </div>
                                     </div>
-                                    {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent modifyShow={false} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
+
+                                    <GalleryDisplayComponent modifyShow={false} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />
                                 </div>
                                 :
                                 <div>

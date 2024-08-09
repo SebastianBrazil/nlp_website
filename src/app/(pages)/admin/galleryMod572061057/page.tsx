@@ -51,7 +51,7 @@ const Page = () => {
                 alert(e);
             }
         }
-        
+
         if (checkToken === true) {
             asyncGet();
         } else {
@@ -136,14 +136,18 @@ const Page = () => {
                                                             )
                                                         })}
 
-                                                        {/* <div className='flex'>
-                                                            <button onClick={() => { decreasePageCount() }}>{"<"}</button>
-                                                            <p>{String(pageCount)}</p>
-                                                            <button onClick={() => { increasePageCount() }}>{">"}</button>
-                                                        </div> */}
+                                                        <div className='col-span-2'>
+                                                            <div className='flex'>
+                                                                <button onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                <p>{String(pageCount)}</p>
+                                                                <button onClick={() => { increasePageCount() }}>{">"}</button>
+                                                            </div>
+                                                            <input className='w-full border border-black' type="text" />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                {displayedTitle !== "" && displayedPhotos.length > 0 && <GalleryDisplayComponent modifyShow={true} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />}
+
+                                                <GalleryDisplayComponent modifyShow={true} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />
                                             </div>
                                             :
                                             <div>
