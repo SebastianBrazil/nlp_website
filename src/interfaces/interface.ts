@@ -34,15 +34,15 @@ export interface IGalleryCardProps {
     setDisplayedTags: Dispatch<SetStateAction<string[]>>,
     setDisplayedPhotos: Dispatch<SetStateAction<string[]>>,
 
-    title: string, 
+    title: string,
     description: string,
     tags: string[],
     photos: string[]
 }
 
-export interface IGalleryCreate {
+export interface IGalleryObject {
     id: number,
-    title: string, 
+    title: string,
     description: string,
     tags: string[],
     photos: string[],

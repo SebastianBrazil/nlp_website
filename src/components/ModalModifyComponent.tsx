@@ -1,5 +1,5 @@
-import { IGalleryCreate, IModalCreateProps } from '@/interfaces/interface'
-import { createNewGalleryGroup } from '@/utils/utils';
+import { IGalleryObject, IModalCreateProps } from '@/interfaces/interface'
+import { modifyGalleryGroup } from '@/utils/utils';
 import React, { useEffect, useState } from 'react'
 import GalleryDisplayComponent from './GalleryDisplayComponent';
 
@@ -7,7 +7,6 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [singleTag, setSingleTag] = useState<string>("");
-
     const [tags, setTags] = useState<string[]>([]);
     const [photos, setPhotos] = useState<string[]>([]);
 
@@ -17,6 +16,8 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
     const [photoError, setPhotoError] = useState<boolean>(false);
     const [hasBeenWarned, setHasBeenWarned] = useState<boolean>(false);
 
+    const [isEnabled, setIsEnabled] = useState<boolean>(true)
+
     const closeModal = () => {
         props.setIsModalOpen(false);
         document.body.classList.remove("overflow-hidden");
@@ -25,7 +26,7 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
     const submitAddGallery = async () => {
         const time = new Date();
 
-        let data: IGalleryCreate = {
+        let data: IGalleryObject = {
             id: 0,
             title: title,
             description: description,
@@ -74,9 +75,11 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
         }
     }
 
-    const submitData = async (passedData: IGalleryCreate) => {
+    const submitData = async (passedData: IGalleryObject) => {
+        setIsEnabled(false);
+
         try {
-            const response = await createNewGalleryGroup(passedData);
+            // const response = await modifyGalleryGroup(passedData);
             closeModal();
 
             setTitle("");
@@ -87,6 +90,8 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
         } catch (e) {
             console.log("Uh: " + e);
         }
+
+        setIsEnabled(true);
     }
 
     const pressedEnterTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -96,14 +101,25 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
     }
 
     const addTags = () => {
-        if (singleTag !== "") {
-            setTags(prevTags => [...prevTags, singleTag]);
+        let formatTag = singleTag.trim();
+
+        if (formatTag !== "" && tags.indexOf(formatTag) === -1) {
+            setTags(prevTags => [...prevTags, formatTag]);
             setSingleTag("");
             setHasBeenWarned(false);
         }
     }
 
-    const handleImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const removeTags = (tagToDelete: string) => {
+        setTags(prevTags => {
+            const updatedTags = prevTags.filter(tag => tag !== tagToDelete);
+            return updatedTags;
+        });
+
+        setHasBeenWarned(false);
+    }
+
+    const addImg = (e: React.ChangeEvent<HTMLInputElement>) => {
         let reader = new FileReader();
         let file = e.target.files?.[0];
 
@@ -114,6 +130,15 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
             };
             setHasBeenWarned(false);
         }
+    }
+
+    const removePhotos = (photoToDelete: string) => {
+        setPhotos(prevPhotos => {
+            const updatedPhotos = prevPhotos.filter(photo => photo !== photoToDelete);
+            return updatedPhotos;
+        });
+
+        setHasBeenWarned(false);
     }
 
     useEffect(() => {
@@ -150,16 +175,50 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
                                 <input onChange={(e) => { setSingleTag(e.target.value); setHasBeenWarned(false); }} onKeyUp={(e) => pressedEnterTag(e)} value={singleTag} placeholder='Single Tag' name="tag" id='tag' className='pl-2 w-[70%] text-2xl border border-black font-gilda' type="text" />
                                 <button type='button' onClick={() => { addTags(); }} className='bg-[#0e2b8d] text-[#EEEEEE] px-3 font-gilda py-0 text-2xl tracking-wider rounded-full ml-3'>Add Tag</button>
                             </div>
+
+                            <div className='flex h-auto flex-wrap w-[600px]'>
+                                {
+                                    tags.length > 0 && tags.map((tag, index) => {
+                                        return (
+                                            <div className='flex mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] border-2 border-black' key={index}>
+                                                <button type='button' onClick={() => { removeTags(tag) }} className='mr-2'>
+                                                    <svg className='grid self-center' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" /></svg>
+                                                </button>
+
+                                                <p className='text-[#222831] text-2xl font-gilda'>{tag}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
 
                         <div className='grid justify-center'>
-                            <label className='text-3xl font-gilda text-center' htmlFor="image">Add Images</label>
-                            <input onChange={(e) => handleImg(e)} name="image" id='image' className='pl-2 text-2xl border bg-white border-black w-80 font-gilda' type="file" />
+                            <label className='mb-2 text-3xl font-gilda text-center' htmlFor="image">Add Images</label>
+                            <input onChange={(e) => addImg(e)} name="image" id='image' className='pl-2 py-2 text-2xl border bg-white border-black font-gilda' type="file" />
+
+                            <div className='flex h-auto flex-wrap w-[600px]'>
+                                {
+                                    photos.length > 0 && photos.map((photo, index) => {
+                                        return (
+                                            <div className='flex mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] border-2 border-black' key={index}>
+                                                <button type='button' onClick={() => { removePhotos(photo) }} className='mr-2'>
+                                                    <svg className='grid self-center' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" /></svg>
+                                                </button>
+
+                                                <p className='text-[#222831] text-2xl font-gilda'>Image {index + 1}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+
+                        <div className='grid justify-center'>
+                            <p className='text-[#222831] mt-8 font-gilda text-4xl'>* How It Looks *</p>
                         </div>
 
                         <GalleryDisplayComponent modifyShow={false} displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
-
-                        {/* add styling for this, make tags and imgs delete on click */}
 
                         {
                             hasBeenWarned === true &&
@@ -182,13 +241,18 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
                         }
 
                         <div className='flex justify-center my-6'>
-                            <input type='submit' className='bg-[#0e2b8d] cursor-pointer text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda' />
+                            {
+                                isEnabled ?
+                                    <input type='submit' className='bg-[#0e2b8d] cursor-pointer text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda' />
+                                    :
+                                    <button type='button' className='bg-[#0e2b8d] text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Submitting, Please Wait</button>
+                            }
                         </div>
                     </form>
                 </div>
 
                 <div className='grid justify-center pb-6'>
-                    <button className='text-2xl w-min bg-[#EEEEEE] cursor-pointer text-[#222831] py-2 px-8 rounded-3xl font-gilda' onClick={() => { closeModal() }}>Close</button>
+                    <button type='button' className='text-2xl w-min bg-[#EEEEEE] cursor-pointer text-[#222831] py-2 px-8 rounded-3xl font-gilda' onClick={() => { closeModal() }}>Close</button>
                 </div>
             </div>
         </div>

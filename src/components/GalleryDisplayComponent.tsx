@@ -1,6 +1,7 @@
 import { IGalleryDisplayProps } from '@/interfaces/interface'
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
+import ModalModifyComponent from './ModalModifyComponent';
 
 const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -97,7 +98,10 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
     return (
         <div className='flex justify-center'>
             <div className='w-[95%] py-5'>
-                <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] flex place-items-center overflow-x-auto galleryScroll">
+                <p className='mb-2 w-full text-[#222831] font-gilda text-4xl text-center'>Images: {props.displayedPhotos.length}</p>
+
+                <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] rounded-xl flex place-items-center overflow-x-auto galleryScroll">
+
                     {
                         props.displayedPhotos.length === 0 ?
                             <Image className="block mx-auto w-[5%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
@@ -142,7 +146,10 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
 
                         {
                             props.modifyShow === true &&
-                            <button className='bg-[#0e2b8d] cursor-pointer mt-6 text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Modify</button>
+                            <div>
+                                <button className='bg-[#0e2b8d] cursor-pointer mt-6 text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Modify</button>
+                                {/* <ModalModifyComponent /> */}
+                            </div>
                         }
                     </div>
                 </div>

@@ -3,13 +3,13 @@
 import GalleryCardComponent from '@/components/GalleryCardComponent'
 import LayoutComponent from '@/components/LayoutComponent'
 import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
-import { IGalleryCreate } from '@/interfaces/interface'
+import { IGalleryObject } from '@/interfaces/interface'
 import { getGalleryPage, getGalleryPageAmount } from '@/utils/utils'
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
-    const [photoGal, setPhotoGal] = useState<IGalleryCreate[]>();
+    const [photoGal, setPhotoGal] = useState<IGalleryObject[]>();
     const [pageCount, setPageCount] = useState<number>(1);
     const [pageAmount, setPageAmount] = useState<number>(1);
 
@@ -21,9 +21,9 @@ const Page = () => {
     useEffect(() => {
         const asyncGet = async () => {
             try {
-                const retrievedData: IGalleryCreate[] = await getGalleryPage(String(pageCount))
+                const retrievedData: IGalleryObject[] = await getGalleryPage(String(pageCount))
                 if (retrievedData.length > 0) {
-                    let swappedData: IGalleryCreate[] = [];
+                    let swappedData: IGalleryObject[] = [];
 
                     for (let i = retrievedData.length; i > 0; i--) {
                         swappedData.push(retrievedData[i - 1])
@@ -65,6 +65,10 @@ const Page = () => {
         }
     }
 
+    const removeTags = (tagToDelete: string) => {
+
+    }
+
     return (
         <LayoutComponent isHero={true} passState="public" heroTags="" heroSrc="/assets/heroPlaceholder.png" heroAlt="Hero Image" >
             <div className="flex justify-center my-10">
@@ -80,13 +84,17 @@ const Page = () => {
                                 <div>
                                     <div className='flex justify-center'>
                                         <div className='grid w-[95%] grid-cols-11'>
-                                            {photoGal.map((photoGroup, index) => {
-                                                return (
-                                                    <div className='col-span-1' key={index}>
-                                                        <GalleryCardComponent setDisplayedTitle={setDisplayedTitle} setDisplayedDescription={setDisplayedDescription} setDisplayedTags={setDisplayedTags} setDisplayedPhotos={setDisplayedPhotos} title={photoGroup.title} description={photoGroup.description} tags={photoGroup.tags} photos={photoGroup.photos} />
-                                                    </div>
-                                                )
-                                            })}
+                                            <div className='col-span-9'>
+                                                <div className='grid grid-cols-9'>
+                                                    {photoGal.map((photoGroup, index) => {
+                                                        return (
+                                                            <div className='col-span-1' key={index}>
+                                                                <GalleryCardComponent setDisplayedTitle={setDisplayedTitle} setDisplayedDescription={setDisplayedDescription} setDisplayedTags={setDisplayedTags} setDisplayedPhotos={setDisplayedPhotos} title={photoGroup.title} description={photoGroup.description} tags={photoGroup.tags} photos={photoGroup.photos} />
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
 
                                             <div className='col-span-2'>
                                                 <div className='flex'>

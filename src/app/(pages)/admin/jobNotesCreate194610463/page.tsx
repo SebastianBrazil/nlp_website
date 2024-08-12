@@ -4,7 +4,7 @@ import GalleryCardComponent from '@/components/GalleryCardComponent'
 import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
 import LayoutComponent from '@/components/LayoutComponent'
 import ModalCreateComponent from '@/components/ModalCreateComponent'
-import { IGalleryCreate } from '@/interfaces/interface'
+import { IGalleryObject } from '@/interfaces/interface'
 import { getJobNotesPage, getJobNotesPageAmount } from '@/utils/utils'
 import React, { useEffect, useState } from 'react'
 
@@ -13,7 +13,7 @@ const Page = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
-    const [photoGal, setPhotoGal] = useState<IGalleryCreate[]>();
+    const [photoGal, setPhotoGal] = useState<IGalleryObject[]>();
     const [pageCount, setPageCount] = useState<number>(1);
     const [pageAmount, setPageAmount] = useState<number>(1);
 
@@ -25,9 +25,9 @@ const Page = () => {
     useEffect(() => {
         const asyncGet = async () => {
             try {
-                const retrievedData: IGalleryCreate[] = await getJobNotesPage(String(pageCount))
+                const retrievedData: IGalleryObject[] = await getJobNotesPage(String(pageCount))
                 if (retrievedData.length > 0) {
-                    let swappedData: IGalleryCreate[] = [];
+                    let swappedData: IGalleryObject[] = [];
 
                     for (let i = retrievedData.length; i > 0; i--) {
                         swappedData.push(retrievedData[i - 1])
