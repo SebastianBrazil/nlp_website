@@ -1,7 +1,7 @@
 import { IGalleryObject, IModalCreateProps } from '@/interfaces/interface'
-import { createNewGalleryGroup } from '@/utils/utils';
 import React, { useEffect, useState } from 'react'
-import GalleryDisplayComponent from './GalleryDisplayComponent';
+import DummyDisplayComponent from './DummyDisplayComponent';
+import { createNewGalleryGroup } from '@/utils/utils-gallery';
 
 const ModalCreateComponent = (props: IModalCreateProps) => {
     const [title, setTitle] = useState<string>("");
@@ -88,7 +88,7 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
             setTags([]);
             setPhotos([]);
         } catch (e) {
-            console.log("Uh: " + e);
+            // console.log("Uh: " + e);
         }
 
         setIsEnabled(true);
@@ -218,7 +218,7 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
                             <p className='text-[#222831] mt-8 font-gilda text-4xl'>* How It Looks *</p>
                         </div>
 
-                        <GalleryDisplayComponent modifyShow={false} displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
+                        <DummyDisplayComponent modifyShow={false} displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
 
                         {
                             hasBeenWarned === true &&

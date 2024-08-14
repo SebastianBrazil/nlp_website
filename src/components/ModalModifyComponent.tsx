@@ -1,14 +1,15 @@
-import { IGalleryObject, IModalCreateProps } from '@/interfaces/interface'
-import { modifyGalleryGroup } from '@/utils/utils';
+import { IGalleryObject, IModalModifyProps } from '@/interfaces/interface'
 import React, { useEffect, useState } from 'react'
-import GalleryDisplayComponent from './GalleryDisplayComponent';
+import DummyDisplayComponent from './DummyDisplayComponent';
+import { modifyGalleryGroup } from '@/utils/utils-gallery';
 
-const ModalModifyComponent = (props: IModalCreateProps) => {
+const ModalModifyComponent = (props: IModalModifyProps) => {
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [singleTag, setSingleTag] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [photos, setPhotos] = useState<string[]>([]);
+    const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
     const [titleError, setTitleError] = useState<boolean>(false);
     const [descriptionError, setDescriptionError] = useState<boolean>(false);
@@ -23,24 +24,20 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
         document.body.classList.remove("overflow-hidden");
     }
 
-    const submitAddGallery = async () => {
+    const submitModGallery = async () => {
         const time = new Date();
 
         let data: IGalleryObject = {
-            id: 0,
+            id: props.displayedPhotoGroup.id,
             title: title,
             description: description,
             tags: tags,
             photos: photos,
 
-            createdOn: time,
+            createdOn: props.displayedPhotoGroup.createdOn,
             updatedOn: time,
-            isPrivateNote: false,
-            isDeleted: false
-        }
-
-        if (props.isPrivate === true) {
-            data.isPrivateNote = true;
+            isPrivateNote: props.displayedPhotoGroup.isPrivateNote,
+            isDeleted: isDeleted
         }
 
         if (hasBeenWarned === false) {
@@ -79,7 +76,7 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
         setIsEnabled(false);
 
         try {
-            // const response = await modifyGalleryGroup(passedData);
+            const response = await modifyGalleryGroup(passedData);
             closeModal();
 
             setTitle("");
@@ -87,8 +84,9 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
             setSingleTag("");
             setTags([]);
             setPhotos([]);
+            setIsDeleted(false);
         } catch (e) {
-            console.log("Uh: " + e);
+            // console.log("Uh: " + e);
         }
 
         setIsEnabled(true);
@@ -152,13 +150,19 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
                 }
             });
         });
+
+        setTitle(props.displayedPhotoGroup.title);
+        setDescription(props.displayedPhotoGroup.description);
+        setTags(props.displayedPhotoGroup.tags);
+        setPhotos(props.displayedPhotoGroup.photos);
+        setIsDeleted(props.displayedPhotoGroup.isDeleted);
     }, []);
 
     return (
         <div className='fixed overflow-scroll inset-0 bg-black z-20 bg-opacity-40'>
             <div className='bg-white z-30 w-[90%] max-w-[1728px] rounded-xl left-0 right-0 my-20 mx-auto'>
                 <div className="w-full h-[95%] grid">
-                    <form id='galForm' action={() => submitAddGallery()}>
+                    <form id='galForm' action={() => submitModGallery()}>
                         <div className='grid justify-center mt-10 mb-6'>
                             <label className='mb-2 text-3xl font-gilda text-center' htmlFor="title">Title</label>
                             <input onChange={(e) => { setTitle(e.target.value); setHasBeenWarned(false); }} value={title} placeholder='Title' name="title" id='title' className='pl-2 text-2xl border border-black w-[600px] font-gilda' type="text" />
@@ -218,7 +222,7 @@ const ModalModifyComponent = (props: IModalCreateProps) => {
                             <p className='text-[#222831] mt-8 font-gilda text-4xl'>* How It Looks *</p>
                         </div>
 
-                        <GalleryDisplayComponent modifyShow={false} displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
+                        <DummyDisplayComponent modifyShow={false} displayedTitle={title} displayedDescription={description} displayedTags={tags} displayedPhotos={photos} />
 
                         {
                             hasBeenWarned === true &&

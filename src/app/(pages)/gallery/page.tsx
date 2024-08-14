@@ -1,10 +1,10 @@
 "use client"
 
 import GalleryCardComponent from '@/components/GalleryCardComponent'
-import LayoutComponent from '@/components/LayoutComponent'
 import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
-import { IGalleryObject } from '@/interfaces/interface'
-import { getGalleryPage, getGalleryPageAmount } from '@/utils/utils'
+import LayoutComponent from '@/components/formatting/LayoutComponent'
+import { IGalleryObject, IRequestObject, IResponseObject } from '@/interfaces/interface'
+import { getGalleryPage } from '@/utils/utils-gallery'
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
@@ -13,38 +13,43 @@ const Page = () => {
     const [pageCount, setPageCount] = useState<number>(1);
     const [pageAmount, setPageAmount] = useState<number>(1);
 
-    const [displayedTitle, setDisplayedTitle] = useState<string>("");
-    const [displayedDescription, setDisplayedDescription] = useState<string>("");
-    const [displayedTags, setDisplayedTags] = useState<string[]>([]);
-    const [displayedPhotos, setDisplayedPhotos] = useState<string[]>([]);
+    const [filterTag, setFilterTag] = useState<string>("");
+    const [filterTitle, setFilterTitle] = useState<string>("");
+
+    const [displayedPhotoGroup, setDisplayedPhotoGroup] = useState<IGalleryObject>();
 
     useEffect(() => {
         const asyncGet = async () => {
             try {
-                const retrievedData: IGalleryObject[] = await getGalleryPage(String(pageCount))
-                if (retrievedData.length > 0) {
+                let requestData: IRequestObject = {
+                    isPeNo: false,
+                    isDe: false,
+                    pageCount: pageCount.toString(),
+                    filterTag: filterTag,
+                    filterTitle: filterTitle,
+                }
+
+                const retrievedData: IResponseObject = await getGalleryPage(requestData);
+
+                if (retrievedData.items.length > 0) {
                     let swappedData: IGalleryObject[] = [];
 
-                    for (let i = retrievedData.length; i > 0; i--) {
-                        swappedData.push(retrievedData[i - 1])
+                    for (let i = retrievedData.items.length; i > 0; i--) {
+                        swappedData.push(retrievedData.items[i - 1])
                     }
 
                     setPhotoGal(swappedData);
 
-                    setDisplayedTitle(swappedData[0].title)
-                    setDisplayedPhotos(swappedData[0].photos);
-                    setDisplayedDescription(swappedData[0].description);
-                    setDisplayedTags(swappedData[0].tags);
+                    setDisplayedPhotoGroup(swappedData[0])
                 }
 
-                const pAmount: number = await getGalleryPageAmount();
-                if (pAmount > 0) {
-                    setPageAmount(pAmount);
+                if (retrievedData.totalPages > 0) {
+                    setPageAmount(retrievedData.totalPages);
                 }
 
                 setIsPhotosLoaded(true);
             } catch (e) {
-                alert(e);
+                // alert(e);
             }
         }
 
@@ -54,19 +59,13 @@ const Page = () => {
     const increasePageCount = () => {
         if (pageCount < pageAmount) {
             setPageCount(pageCount + 1);
-            console.log("increased")
         }
     }
 
     const decreasePageCount = () => {
         if (pageCount > 1) {
             setPageCount(pageCount - 1);
-            console.log("decreased")
         }
-    }
-
-    const removeTags = (tagToDelete: string) => {
-
     }
 
     return (
@@ -89,7 +88,7 @@ const Page = () => {
                                                     {photoGal.map((photoGroup, index) => {
                                                         return (
                                                             <div className='col-span-1' key={index}>
-                                                                <GalleryCardComponent setDisplayedTitle={setDisplayedTitle} setDisplayedDescription={setDisplayedDescription} setDisplayedTags={setDisplayedTags} setDisplayedPhotos={setDisplayedPhotos} title={photoGroup.title} description={photoGroup.description} tags={photoGroup.tags} photos={photoGroup.photos} />
+                                                                <GalleryCardComponent setDisplayedPhotoGroup={setDisplayedPhotoGroup} photoGroup={photoGroup} />
                                                             </div>
                                                         )
                                                     })}
@@ -107,7 +106,9 @@ const Page = () => {
                                         </div>
                                     </div>
 
-                                    <GalleryDisplayComponent modifyShow={false} displayedTitle={displayedTitle} displayedDescription={displayedDescription} displayedTags={displayedTags} displayedPhotos={displayedPhotos} />
+                                    {
+                                        displayedPhotoGroup && <GalleryDisplayComponent modifyShow={false} displayedPhotoGroup={displayedPhotoGroup} />
+                                    }
                                 </div>
                                 :
                                 <div>

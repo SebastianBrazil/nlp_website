@@ -1,15 +1,12 @@
-import { IGalleryDisplayProps } from '@/interfaces/interface'
+import { IDummyDisplayProps } from '@/interfaces/interface'
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
-import ModalModifyComponent from './ModalModifyComponent';
 
-const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
+const DummyDisplayComponent = (props: IDummyDisplayProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [startX, setStartX] = useState<number>(0);
     const [scrollLeft, setScrollLeft] = useState<number>(0);
-
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const handleMouseDown = (e: MouseEvent) => {
         e.preventDefault();
@@ -97,24 +94,19 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
         };
     }, [props])
 
-    const openModModal = () => {
-        setIsModalOpen(true);
-        document.body.classList.add("overflow-hidden");
-    }
-
     return (
         <div className='flex justify-center'>
             <div className='w-[95%] py-5'>
-                <p className='mb-2 w-full text-[#222831] font-gilda text-4xl text-center'>Images: {props.displayedPhotoGroup.photos.length}</p>
+                <p className='mb-2 w-full text-[#222831] font-gilda text-4xl text-center'>Images: {props.displayedPhotos.length}</p>
 
                 <div ref={containerRef} className="w-full h-[750px] border-4 border-black bg-[#222831] rounded-xl flex place-items-center overflow-x-auto galleryScroll">
 
                     {
-                        props.displayedPhotoGroup.photos.length === 0 ?
+                        props.displayedPhotos.length === 0 ?
                             <Image className="block mx-auto w-[5%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={"/assets/noImg.png"} alt="No Image Available" />
                             :
-                            props.displayedPhotoGroup.photos.length > 0 ?
-                                props.displayedPhotoGroup.photos.map((photo, index) => {
+                            props.displayedPhotos.length > 0 ?
+                                props.displayedPhotos.map((photo, index) => {
                                     return (
                                         <Image key={index} className="block mx-auto w-[5%] px-5 min-w-min h-[710px]" width={1500} height={800} loading="lazy" src={photo} alt="Gallery Image" />
                                     )
@@ -127,8 +119,8 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                 <div className='flex justify-center'>
                     <div className='w-[70%]'>
                         <div className='flex h-auto flex-wrap'>
-                            {props.displayedPhotoGroup.tags.length > 0 ?
-                                props.displayedPhotoGroup.tags.map((tag, index) => {
+                            {props.displayedTags.length > 0 ?
+                                props.displayedTags.map((tag, index) => {
                                     return (
                                         <p className='mr-3 mt-4 py-2 px-4 rounded-2xl bg-[#EEEEEE] text-[#222831] border-2 border-black text-3xl font-gilda' key={index}>{tag}</p>
                                     )
@@ -139,24 +131,16 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                         </div>
 
                         {
-                            props.displayedPhotoGroup.title === "" ?
+                            props.displayedTitle === "" ?
                                 <p className='text-5xl font-gilda pt-6'>Title: No Title</p>
                                 :
-                                <p className='text-5xl font-gilda pt-6'>Title: {props.displayedPhotoGroup.title}</p>
+                                <p className='text-5xl font-gilda pt-6'>Title: {props.displayedTitle}</p>
                         }
                         {
-                            props.displayedPhotoGroup.description === "" ?
+                            props.displayedDescription === "" ?
                                 <p className='text-3xl pt-6 font-gilda'>Description: No Description</p>
                                 :
-                                <p className='text-3xl pt-6 font-gilda'>Description: {props.displayedPhotoGroup.description}</p>
-                        }
-
-                        {
-                            props.modifyShow === true &&
-                            <div>
-                                <button onClick={() => { openModModal() }} className='bg-[rgb(14,43,141)] cursor-pointer mt-6 text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Modify</button>
-                                {isModalOpen && <ModalModifyComponent setIsModalOpen={setIsModalOpen} displayedPhotoGroup={props.displayedPhotoGroup} />}
-                            </div>
+                                <p className='text-3xl pt-6 font-gilda'>Description: {props.displayedDescription}</p>
                         }
                     </div>
                 </div>
@@ -165,4 +149,4 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
     )
 }
 
-export default GalleryDisplayComponent
+export default DummyDisplayComponent

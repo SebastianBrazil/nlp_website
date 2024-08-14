@@ -1,8 +1,8 @@
 "use client"
 
-import LayoutComponent from '@/components/LayoutComponent';
+import LayoutComponent from '@/components/formatting/LayoutComponent';
 import { ISubmitData, IToken } from '@/interfaces/interface';
-import { login } from '@/utils/utils';
+import { login } from '@/utils/utils-user';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -12,9 +12,13 @@ const Page = () => {
     const [loginFailed, setLoginFailed] = useState<boolean>(false)
     const [tokenFailed, setTokenFailed] = useState<boolean>(false)
 
+    const [isEnabled, setIsEnabled] = useState<boolean>(true)
+
     const router = useRouter();
 
     const submitLoginAttempt = async () => {
+        setIsEnabled(false);
+
         const submitData: ISubmitData = {
             username: usernameVar,
             password: passwordVar
@@ -31,6 +35,8 @@ const Page = () => {
         } catch (e) {
             setLoginFailed(true);
         }
+
+        setIsEnabled(true);
     }
 
     const pressedEnterPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -81,7 +87,12 @@ const Page = () => {
                         </div>
 
                         <div className='flex justify-center mt-4'>
-                            <button type='submit' className='cursor-pointer bg-[#0e2b8d] text-[#EEEEEE] py-2 px-6 rounded-3xl text-2xl font-gilda'>Enter</button>
+                            {
+                                isEnabled ?
+                                    <button type='submit' className='cursor-pointer bg-[#0e2b8d] text-[#EEEEEE] py-2 px-6 rounded-3xl text-2xl font-gilda'>Enter</button>
+                                    :
+                                    <button type='button' className='cursor-pointer bg-[#0e2b8d] text-[#EEEEEE] py-2 px-6 rounded-3xl text-2xl font-gilda'>Entering...</button>
+                            }
                         </div>
                     </form>
 

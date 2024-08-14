@@ -15,11 +15,16 @@ export interface ISubmitData {
     password: string
 }
 
-export interface IGalleryDisplayProps {
+export interface IDummyDisplayProps {
     displayedTitle: string, 
     displayedDescription: string,
     displayedTags: string[],
     displayedPhotos: string[],
+    modifyShow: boolean
+}
+
+export interface IGalleryDisplayProps {
+    displayedPhotoGroup: IGalleryObject,
     modifyShow: boolean
 }
 
@@ -28,16 +33,14 @@ export interface IModalCreateProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export interface IGalleryCardProps {
-    setDisplayedTitle: Dispatch<SetStateAction<string>>,
-    setDisplayedDescription: Dispatch<SetStateAction<string>>,
-    setDisplayedTags: Dispatch<SetStateAction<string[]>>,
-    setDisplayedPhotos: Dispatch<SetStateAction<string[]>>,
+export interface IModalModifyProps {
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>
+    displayedPhotoGroup: IGalleryObject
+}
 
-    title: string,
-    description: string,
-    tags: string[],
-    photos: string[]
+export interface IGalleryCardProps {
+    setDisplayedPhotoGroup: Dispatch<SetStateAction<IGalleryObject | undefined>>,
+    photoGroup: IGalleryObject
 }
 
 export interface IGalleryObject {
@@ -50,4 +53,18 @@ export interface IGalleryObject {
     updatedOn: Date,
     isPrivateNote: boolean,
     isDeleted: boolean
+}
+
+export interface IRequestObject {
+    isPeNo: boolean,
+    isDe: boolean,
+    pageCount: string,
+    filterTag?: string,
+    filterTitle?: string,
+    [key: string]: string | boolean | undefined;
+}
+
+export interface IResponseObject {
+    items: IGalleryObject[],
+    totalPages: number
 }

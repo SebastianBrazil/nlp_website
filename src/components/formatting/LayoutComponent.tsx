@@ -1,6 +1,6 @@
-import FooterComponent from "@/components/FooterComponent";
 import NavbarComponent from "./NavbarComponent";
 import HeroComponent from "./HeroComponent";
+import FooterComponent from "./FooterComponent";
 
 export default function LayoutComponent({ children, passState, heroTags, heroSrc, heroAlt, isHero }: { children: React.ReactNode, passState: string, heroTags: string, heroSrc: string, heroAlt: string, isHero: boolean }) {
     return (

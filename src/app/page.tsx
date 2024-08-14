@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LayoutComponent from "@/components/LayoutComponent";
+import LayoutComponent from "@/components/formatting/LayoutComponent";
 
 export default function Home() {
   return (

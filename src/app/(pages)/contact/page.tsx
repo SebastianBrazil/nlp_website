@@ -1,4 +1,4 @@
-import LayoutComponent from '@/components/LayoutComponent'
+import LayoutComponent from '@/components/formatting/LayoutComponent'
 import React from 'react'
 
 const Page = () => {

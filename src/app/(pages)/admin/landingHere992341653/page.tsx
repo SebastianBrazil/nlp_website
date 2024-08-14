@@ -1,6 +1,6 @@
 "use client"
 
-import LayoutComponent from '@/components/LayoutComponent'
+import LayoutComponent from '@/components/formatting/LayoutComponent'
 import React, { useEffect, useState } from 'react'
 
 const Page = () => {
