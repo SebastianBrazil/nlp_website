@@ -12,6 +12,7 @@ const Page = () => {
     const [photoGal, setPhotoGal] = useState<IGalleryObject[]>();
     const [pageCount, setPageCount] = useState<number>(1);
     const [pageAmount, setPageAmount] = useState<number>(1);
+    const [renderSubmit, setRenderSubmit] = useState<boolean>(false);
 
     const [filterTag, setFilterTag] = useState<string>("");
     const [filterTitle, setFilterTitle] = useState<string>("");
@@ -54,7 +55,7 @@ const Page = () => {
         }
 
         asyncGet();
-    }, [pageCount])
+    }, [pageCount, renderSubmit])
 
     const increasePageCount = () => {
         if (pageCount < pageAmount) {
@@ -101,13 +102,16 @@ const Page = () => {
                                                     <p>{String(pageCount)}</p>
                                                     <button onClick={() => { increasePageCount() }}>{">"}</button>
                                                 </div>
-                                                <input className='w-full border border-black' type="text" />
+                                                <input value={filterTitle} onChange={(e) => { setFilterTitle(e.target.value) }} placeholder='Title' className='w-full border border-black' type="text" />
+                                                <input value={filterTag} onChange={(e) => { setFilterTag(e.target.value) }} placeholder='Tags' className='w-full border border-black' type="text" />
+                                                <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>check</button>
+                                                <button onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>reset</button>
                                             </div>
                                         </div>
                                     </div>
 
                                     {
-                                        displayedPhotoGroup && <GalleryDisplayComponent modifyShow={false} displayedPhotoGroup={displayedPhotoGroup} />
+                                        displayedPhotoGroup && <GalleryDisplayComponent renderSubmit={null} setRenderSubmit={null} modifyShow={false} displayedPhotoGroup={displayedPhotoGroup} />
                                     }
                                 </div>
                                 :

@@ -152,10 +152,10 @@ const GalleryDisplayComponent = (props: IGalleryDisplayProps) => {
                         }
 
                         {
-                            props.modifyShow === true &&
+                            props.modifyShow === true && props.renderSubmit !== null && props.setRenderSubmit !== null &&
                             <div>
                                 <button onClick={() => { openModModal() }} className='bg-[rgb(14,43,141)] cursor-pointer mt-6 text-[#EEEEEE] py-2 px-6 text-2xl rounded-3xl font-gilda'>Modify</button>
-                                {isModalOpen && <ModalModifyComponent setIsModalOpen={setIsModalOpen} displayedPhotoGroup={props.displayedPhotoGroup} />}
+                                {isModalOpen && <ModalModifyComponent setRenderSubmit={props.setRenderSubmit} renderSubmit={props.renderSubmit} setIsModalOpen={setIsModalOpen} displayedPhotoGroup={props.displayedPhotoGroup} />}
                             </div>
                         }
                     </div>

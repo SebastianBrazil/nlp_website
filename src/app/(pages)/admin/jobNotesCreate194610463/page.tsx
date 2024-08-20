@@ -11,6 +11,7 @@ import GalleryDisplayComponent from '@/components/GalleryDisplayComponent'
 const Page = () => {
     const [checkToken, setCheckToken] = useState<boolean>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [renderSubmit, setRenderSubmit] = useState<boolean>(false);
 
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
     const [photoGal, setPhotoGal] = useState<IGalleryObject[]>();
@@ -67,7 +68,7 @@ const Page = () => {
                 setCheckToken(false);
             }
         }
-    }, [pageCount])
+    }, [pageCount, renderSubmit])
 
     const increasePageCount = () => {
         if (pageCount < pageAmount) {
@@ -114,7 +115,7 @@ const Page = () => {
             {
                 checkToken === true &&
                 <LayoutComponent passState="admin" isHero={false} heroTags="" heroSrc="n/a" heroAlt="No Image" >
-                    {isModalOpen && <ModalCreateComponent isPrivate={true} setIsModalOpen={setIsModalOpen} />}
+                    {isModalOpen && <ModalCreateComponent renderSubmit={renderSubmit} setRenderSubmit={setRenderSubmit} isPrivate={true} setIsModalOpen={setIsModalOpen} />}
 
                     <div>
                         <div className="flex justify-center my-10">
@@ -131,24 +132,31 @@ const Page = () => {
                                             <div>
                                                 <div className='flex justify-center'>
                                                     <div className='grid w-[95%] grid-cols-11'>
-                                                        {photoGal.map((photoGroup, index) => {
-                                                            return (
-                                                                <div className='col-span-1' key={index}>
-                                                                    <GalleryCardComponent setDisplayedPhotoGroup={setDisplayedPhotoGroup} photoGroup={photoGroup} />
-                                                                </div>
-                                                            )
-                                                        })}
+                                                        <div className='col-span-9'>
+                                                            <div className='grid grid-cols-9'>
+                                                                {photoGal.map((photoGroup, index) => {
+                                                                    return (
+                                                                        <div className='col-span-1' key={index}>
+                                                                            <GalleryCardComponent setDisplayedPhotoGroup={setDisplayedPhotoGroup} photoGroup={photoGroup} />
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </div>
+                                                        </div>
 
-                                                        {/* <div className='flex'>
-                                                            <button onClick={() => { decreasePageCount() }}>{"<"}</button>
-                                                            <p>{String(pageCount)}</p>
-                                                            <button onClick={() => { increasePageCount() }}>{">"}</button>
-                                                        </div> */}
+                                                        <div className='col-span-2'>
+                                                            <div className='flex'>
+                                                                <button onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                <p>{String(pageCount)}</p>
+                                                                <button onClick={() => { increasePageCount() }}>{">"}</button>
+                                                            </div>
+                                                            <input className='w-full border border-black' type="text" />
+                                                        </div>
                                                     </div>
                                                 </div>
 
                                                 {
-                                                    displayedPhotoGroup && <GalleryDisplayComponent modifyShow={true} displayedPhotoGroup={displayedPhotoGroup} />
+                                                    displayedPhotoGroup && <GalleryDisplayComponent renderSubmit={renderSubmit} setRenderSubmit={setRenderSubmit} modifyShow={true} displayedPhotoGroup={displayedPhotoGroup} />
                                                 }
                                             </div>
                                             :

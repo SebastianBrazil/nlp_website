@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react'
 const Page = () => {
     const [checkToken, setCheckToken] = useState<boolean>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [renderSubmit, setRenderSubmit] = useState<boolean>(false);
 
     const [isPhotosLoaded, setIsPhotosLoaded] = useState<boolean>(false);
     const [photoGal, setPhotoGal] = useState<IGalleryObject[]>();
@@ -67,7 +68,7 @@ const Page = () => {
                 setCheckToken(false);
             }
         }
-    }, [pageCount])
+    }, [pageCount, renderSubmit])
 
     const increasePageCount = () => {
         if (pageCount < pageAmount) {
@@ -115,7 +116,7 @@ const Page = () => {
             {
                 checkToken === true &&
                 <LayoutComponent passState="admin" isHero={false} heroTags="" heroSrc="n/a" heroAlt="No Image" >
-                    {isModalOpen && <ModalCreateComponent isPrivate={false} setIsModalOpen={setIsModalOpen} />}
+                    {isModalOpen && <ModalCreateComponent renderSubmit={renderSubmit} setRenderSubmit={setRenderSubmit} isPrivate={false} setIsModalOpen={setIsModalOpen} />}
 
                     <div>
                         <div className="flex justify-center my-10">
@@ -156,7 +157,7 @@ const Page = () => {
                                                 </div>
 
                                                 {
-                                                    displayedPhotoGroup && <GalleryDisplayComponent modifyShow={true} displayedPhotoGroup={displayedPhotoGroup} />
+                                                    displayedPhotoGroup && <GalleryDisplayComponent renderSubmit={renderSubmit} setRenderSubmit={setRenderSubmit} modifyShow={true} displayedPhotoGroup={displayedPhotoGroup} />
                                                 }
                                             </div>
                                             :

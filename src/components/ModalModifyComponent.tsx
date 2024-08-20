@@ -77,14 +77,18 @@ const ModalModifyComponent = (props: IModalModifyProps) => {
 
         try {
             const response = await modifyGalleryGroup(passedData);
-            closeModal();
+            if (response) {
 
-            setTitle("");
-            setDescription("");
-            setSingleTag("");
-            setTags([]);
-            setPhotos([]);
-            setIsDeleted(false);
+                setTitle("");
+                setDescription("");
+                setSingleTag("");
+                setTags([]);
+                setPhotos([]);
+                setIsDeleted(false);
+                props.setRenderSubmit(!props.renderSubmit);
+
+                closeModal();
+            }
         } catch (e) {
             // console.log("Uh: " + e);
         }

@@ -80,13 +80,15 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
 
         try {
             const response = await createNewGalleryGroup(passedData);
-            closeModal();
+            if (response) {
+                closeModal();
 
-            setTitle("");
-            setDescription("");
-            setSingleTag("");
-            setTags([]);
-            setPhotos([]);
+                setTitle("");
+                setDescription("");
+                setSingleTag("");
+                setTags([]);
+                setPhotos([]);
+            }
         } catch (e) {
             // console.log("Uh: " + e);
         }

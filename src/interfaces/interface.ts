@@ -25,16 +25,22 @@ export interface IDummyDisplayProps {
 
 export interface IGalleryDisplayProps {
     displayedPhotoGroup: IGalleryObject,
+    renderSubmit: boolean | null,
+    setRenderSubmit: Dispatch<SetStateAction<boolean>> | null,
     modifyShow: boolean
 }
 
 export interface IModalCreateProps {
     isPrivate: boolean,
+    renderSubmit: boolean,
+    setRenderSubmit: Dispatch<SetStateAction<boolean>>,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export interface IModalModifyProps {
-    setIsModalOpen: Dispatch<SetStateAction<boolean>>
+    renderSubmit: boolean,
+    setRenderSubmit: Dispatch<SetStateAction<boolean>>,
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>,
     displayedPhotoGroup: IGalleryObject
 }
 
