@@ -74,3 +74,9 @@ export interface IResponseObject {
     items: IGalleryObject[],
     totalPages: number
 }
+
+export interface IModalToast {
+    setOpenToast: Dispatch<SetStateAction<boolean>>,
+    openToast: boolean,
+    innerText: string,
+}

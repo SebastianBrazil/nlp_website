@@ -7,6 +7,7 @@ import ModalCreateComponent from '@/components/ModalCreateComponent'
 import { IGalleryObject, IRequestObject, IResponseObject } from '@/interfaces/interface'
 import { getGalleryPage } from '@/utils/utils-gallery'
 import React, { useEffect, useState } from 'react'
+import ModalToastComponent from '@/components/ModalToastComponent'
 
 const Page = () => {
     const [checkToken, setCheckToken] = useState<boolean>()
@@ -20,8 +21,10 @@ const Page = () => {
 
     const [filterTag, setFilterTag] = useState<string>("");
     const [filterTitle, setFilterTitle] = useState<string>("");
-
     const [displayedPhotoGroup, setDisplayedPhotoGroup] = useState<IGalleryObject>();
+
+    const [openToast, setOpenToast] = useState<boolean>(false);
+    const [innerText, setInnerText] = useState<string>();
 
     useEffect(() => {
         const asyncGet = async () => {
@@ -54,7 +57,8 @@ const Page = () => {
 
                 setIsPhotosLoaded(true);
             } catch (e) {
-                // alert(e);
+                setInnerText("An Error Has Occurred While Trying To Load The Gallery, Please Try Again Later");
+                setOpenToast(true);
             }
         }
 
@@ -146,12 +150,43 @@ const Page = () => {
                                                         </div>
 
                                                         <div className='col-span-2'>
-                                                            <div className='flex'>
-                                                                <button onClick={() => { decreasePageCount() }}>{"<"}</button>
-                                                                <p>{String(pageCount)}</p>
-                                                                <button onClick={() => { increasePageCount() }}>{">"}</button>
+                                                            <div className='grid grid-cols-3'>
+                                                                <div className='col-span-1 flex justify-center'>
+                                                                    {
+                                                                        pageCount < pageAmount ?
+                                                                            <button className='' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                            :
+                                                                            <button className='text-gray-300 cursor-not-allowed' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                    }
+                                                                </div>
+                                                                <div className='col-span-1 flex justify-center'>
+                                                                    <p>{String(pageCount)}</p>
+                                                                </div>
+                                                                <div className='col-span-1 flex justify-center'>
+                                                                    {
+                                                                        pageCount > 1 ?
+                                                                            <button className='' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                            :
+                                                                            <button className='text-gray-300 cursor-not-allowed' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                    }
+                                                                </div>
                                                             </div>
-                                                            <input className='w-full border border-black' type="text" />
+
+                                                            <input value={filterTitle} onChange={(e) => { setFilterTitle(e.target.value) }} placeholder='Title' className='w-full border border-black' type="text" />
+                                                            <input value={filterTag} onChange={(e) => { setFilterTag(e.target.value) }} placeholder='Tags' className='w-full border border-black my-2' type="text" />
+
+                                                            {
+                                                                filterTag === "" && filterTitle === "" ?
+                                                                    <div className='flex justify-between'>
+                                                                        <button className=' ' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
+                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                                    </div>
+                                                                    :
+                                                                    <div className='flex justify-between'>
+                                                                        <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
+                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                                    </div>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
@@ -176,6 +211,11 @@ const Page = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                }
+
+                                {
+                                    openToast && innerText &&
+                                    <ModalToastComponent innerText={innerText} openToast={openToast} setOpenToast={setOpenToast} />
                                 }
                             </main>
                         </div>
