@@ -15,14 +15,10 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
         router.push('/gallery');
     }
 
-    const goToAbout = () => {
-        router.push('/about');
-    }
-
     const goToContact = () => {
         router.push('/contact');
     }
-    
+
     const goToAdminHome = () => {
         router.push('/admin/landingHere992341653');
     }
@@ -46,9 +42,10 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                 checkState === "public" ?
                     <header>
                         <div className='h-[110px] w-full bg-[#222831]'>
-                            <div className='h-[110px] flex justify-between'>
-                                <div className='grid items-center'>
-                                    {/* <div className="w-full h-[500px] relative">
+                            <div className='flex justify-center'>
+                                <div className='h-[110px] w-full max-w-[1920px] flex justify-between'>
+                                    <div className='grid items-center'>
+                                        {/* <div className="w-full h-[500px] relative">
                                         <Image
                                             fill={true}
                                             placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
@@ -59,19 +56,19 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                                             sizes="100vw"
                                         />
                                     </div> */}
-                                    <a onClick={() => { goToHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
-                                </div>
-                                <div className='grid items-center mr-10'>
-                                    <button onClick={() => { goToContact() }} className='bg-[#ad3232] text-[#EEEEEE] font-beau py-0 text-[44px] px-10 tracking-wider rounded-full'>Contact</button>
+                                        <a onClick={() => { goToHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
+                                    </div>
+                                    <div className='grid items-center mr-10'>
+                                        <button onClick={() => { goToContact() }} className='bg-[#ad3232] text-[#EEEEEE] font-beau py-0 text-[44px] px-10 tracking-wider rounded-full'>Contact</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <nav>
                             <div className='w-full h-[60px] bg-[#EEEEEE] flex justify-center'>
-                                <div className='w-[450px] grid items-center'>
+                                <div className='w-[350px] grid items-center'>
                                     <div className='flex justify-between'>
                                         <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToHome() }}>Home</a>
-                                        <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToAbout() }}>About Us</a>
                                         <a className='text-[#222831] cursor-pointer tracking-wide font-beau text-4xl' onClick={() => { goToGallery() }}>Gallery</a>
                                     </div>
                                 </div>
@@ -82,9 +79,10 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                     checkState === "dummyAdmin" ?
                         <header>
                             <div className='h-[110px] w-full bg-[#222831]'>
-                                <div className='h-[110px] flex justify-between'>
-                                    <div className='grid items-center'>
-                                        {/* <div className="w-full h-[500px] relative">
+                                <div className='flex justify-center'>
+                                    <div className='h-[110px] w-full max-w-[1920px] flex justify-between'>
+                                        <div className='grid items-center'>
+                                            {/* <div className="w-full h-[500px] relative">
                                             <Image
                                                 fill={true}
                                                 placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
@@ -95,10 +93,11 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                                                 sizes="100vw"
                                             />
                                         </div> */}
-                                        <p className='text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</p>
-                                    </div>
-                                    <div className='grid items-center mr-10'>
-                                        <p className='text-[#EEEEEE] font-beau tracking-wider py-0 text-[44px] px-10 rounded-full'>Administrator</p>
+                                            <p className='text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</p>
+                                        </div>
+                                        <div className='grid items-center mr-10'>
+                                            <p className='text-[#EEEEEE] font-beau tracking-wider py-0 text-[44px] px-10 rounded-full'>Administrator</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -119,9 +118,10 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                         checkState === "admin" &&
                         <header>
                             <div className='h-[110px] w-full bg-[#222831]'>
-                                <div className='h-[110px] flex justify-between'>
-                                    <div className='grid items-center'>
-                                        {/* <div className="w-full h-[500px] relative">
+                                <div className='flex justify-center'>
+                                    <div className='h-[110px] w-full max-w-[1920px] flex justify-between'>
+                                        <div className='grid items-center'>
+                                            {/* <div className="w-full h-[500px] relative">
                                             <Image
                                                 fill={true}
                                                 placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
@@ -132,10 +132,11 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                                                 sizes="100vw"
                                             />
                                         </div> */}
-                                        <a onClick={() => { goToAdminHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
-                                    </div>
-                                    <div className='grid items-center mr-10'>
-                                        <p className='text-[#EEEEEE] font-beau tracking-wider py-0 text-[44px] px-10 rounded-full'>Administrator</p>
+                                            <a onClick={() => { goToAdminHome() }} className='cursor-pointer text-[#EEEEEE] text-7xl pl-10 font-gilda tracking-wide'>NLP</a>
+                                        </div>
+                                        <div className='grid items-center mr-10'>
+                                            <p className='text-[#EEEEEE] font-beau tracking-wider py-0 text-[44px] px-10 rounded-full'>Administrator</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

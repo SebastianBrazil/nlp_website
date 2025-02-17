@@ -5,8 +5,8 @@ import React from "react";
 const HeroComponent = (props: HeroProps) => {
   return (
     <>
-      <section>
-        <div className="z-10 w-full h-[500px] relative">
+      <section className="flex justify-center bg-[#222831]">
+        <div className="z-10 max-w-[1920px] w-full h-[500px] relative">
           <Image
             fill={true}
             priority={true}

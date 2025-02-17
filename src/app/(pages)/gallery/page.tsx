@@ -105,37 +105,37 @@ const Page = () => {
                                                     <div className='col-span-1 flex justify-center'>
                                                         {
                                                             pageCount < pageAmount ?
-                                                                <button className='' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                <button className='font-gilda' onClick={() => { decreasePageCount() }}>{"<"}</button>
                                                                 :
-                                                                <button className='text-gray-300 cursor-not-allowed' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                <button className='text-gray-300 cursor-not-allowed font-gilda' onClick={() => { decreasePageCount() }}>{"<"}</button>
                                                         }
                                                     </div>
                                                     <div className='col-span-1 flex justify-center'>
-                                                        <p>{String(pageCount)}</p>
+                                                        <p className='font-gilda'>{String(pageCount)}</p>
                                                     </div>
                                                     <div className='col-span-1 flex justify-center'>
                                                         {
                                                             pageCount > 1 ?
-                                                                <button className='' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                <button className='font-gilda' onClick={() => { increasePageCount() }}>{">"}</button>
                                                                 :
-                                                                <button className='text-gray-300 cursor-not-allowed' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                <button className='text-gray-300 cursor-not-allowed font-gilda' onClick={() => { increasePageCount() }}>{">"}</button>
                                                         }
                                                     </div>
                                                 </div>
 
-                                                <input value={filterTitle} onChange={(e) => { setFilterTitle(e.target.value) }} placeholder='Title' className='w-full border border-black' type="text" />
-                                                <input value={filterTag} onChange={(e) => { setFilterTag(e.target.value) }} placeholder='Tags' className='w-full border border-black my-2' type="text" />
+                                                <input value={filterTitle} onChange={(e) => { setFilterTitle(e.target.value) }} placeholder='Title' className='w-full border border-black font-gilda' type="text" />
+                                                <input value={filterTag} onChange={(e) => { setFilterTag(e.target.value) }} placeholder='Tags' className='w-full border border-black my-2 font-gilda' type="text" />
 
                                                 {
                                                     filterTag === "" && filterTitle === "" ?
                                                         <div className='flex justify-between'>
-                                                            <button className=' ' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                            <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
                                                         </div>
                                                         :
                                                         <div className='flex justify-between'>
-                                                            <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                            <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                            <button className='font-gilda' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
+                                                            <button className='font-gilda' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
                                                         </div>
                                                 }
                                             </div>

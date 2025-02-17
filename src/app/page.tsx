@@ -5,12 +5,10 @@ export default function Home() {
   return (
     <LayoutComponent isHero={true} passState="public" heroTags="" heroSrc="/assets/heroPlaceholder.png" heroAlt="Hero Image" >
       <div className="flex justify-center my-10">
-        <main className="w-[70%]">
+        <main className="w-[70%] max-w-[1344px]">
           <div className="grid grid-cols-2">
-            <p className="col-span-1 text-xl font-gilda mr-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div className="col-span-1 ml-4">
-              <div className="w-full h-full relative">
+            <div className="col-span-1 mr-4">
+              <div className="relative w-full h-40">
                 <Image
                   fill={true}
                   placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPs/w8AAiMBkMscdekAAAAASUVORK5CYII="
@@ -22,6 +20,8 @@ export default function Home() {
                 />
               </div>
             </div>
+
+            <p className="col-span-1 text-xl font-gilda mr-4">No Limits Painting is a company that specializes in cabinet stains and paint finishes. Based in Stockton, CA, we have served central California, the Bay Area, and beyond for over 15 years. We also finish doors and other furniture as well. If you need a job done right, feel free to contact us.</p>
           </div>
         </main>
       </div>
