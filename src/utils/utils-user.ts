@@ -1,6 +1,6 @@
 import { IResponseObject, ISubmitData, IToken } from "@/interfaces/interface";
 
-const urlU: string = "https://nlp-db-api.azurewebsites.net/";
+const urlU: string = "https://nolimitspainting-api-25-cqh0ceehawe3e6af.westus2-01.azurewebsites.net/";
 
 export const login = async (loginUser: ISubmitData) => {
     const res = await fetch(urlU + "NLP_User/Login", {

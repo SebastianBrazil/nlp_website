@@ -1,6 +1,6 @@
 import { IGalleryObject, IRequestObject } from "@/interfaces/interface";
 
-const urlG: string = "https://nlp-db-api.azurewebsites.net/";
+const urlG: string = "https://nolimitspainting-api-25-cqh0ceehawe3e6af.westus2-01.azurewebsites.net/";
 
 export const createNewGalleryGroup = async (passedData: IGalleryObject) => {
     const res = await fetch(urlG + "NLP_Gallery/AddGalleryItem", {
