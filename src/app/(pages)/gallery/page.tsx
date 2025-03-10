@@ -45,6 +45,8 @@ const Page = () => {
                     setPhotoGal(swappedData);
 
                     setDisplayedPhotoGroup(swappedData[0])
+                } else {
+                    setPhotoGal(undefined);
                 }
 
                 if (retrievedData.totalPages > 0) {
@@ -107,7 +109,7 @@ const Page = () => {
                                                             pageCount < pageAmount ?
                                                                 <button className='font-gilda' onClick={() => { decreasePageCount() }}>{"<"}</button>
                                                                 :
-                                                                <button className='text-gray-300 cursor-not-allowed font-gilda' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                <button className='text-gray-300 cursor-not-allowed font-gilda'>{"<"}</button>
                                                         }
                                                     </div>
                                                     <div className='col-span-1 flex justify-center'>
@@ -118,7 +120,7 @@ const Page = () => {
                                                             pageCount > 1 ?
                                                                 <button className='font-gilda' onClick={() => { increasePageCount() }}>{">"}</button>
                                                                 :
-                                                                <button className='text-gray-300 cursor-not-allowed font-gilda' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                <button className='text-gray-300 cursor-not-allowed font-gilda'>{">"}</button>
                                                         }
                                                     </div>
                                                 </div>
@@ -129,13 +131,13 @@ const Page = () => {
                                                 {
                                                     filterTag === "" && filterTitle === "" ?
                                                         <div className='flex justify-between'>
-                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Set Filter</button>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Clear Filter</button>
                                                         </div>
                                                         :
                                                         <div className='flex justify-between'>
-                                                            <button className='font-gilda' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                            <button className='font-gilda' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                            <button className='font-gilda' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
+                                                            <button className='font-gilda' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
                                                         </div>
                                                 }
                                             </div>
@@ -148,6 +150,42 @@ const Page = () => {
                                 </div>
                                 :
                                 <div>
+                                    <div className='flex justify-center'>
+                                        <div className='grid w-[95%] grid-cols-11'>
+                                            <div className='col-span-9'></div>
+
+                                            <div className='col-span-2'>
+                                                <div className='grid grid-cols-3'>
+                                                    <div className='col-span-1 flex justify-center'>
+                                                        <button className='text-gray-300 cursor-not-allowed font-gilda'>{"<"}</button>
+                                                    </div>
+                                                    <div className='col-span-1 flex justify-center'>
+                                                        <p className='font-gilda'>1</p>
+                                                    </div>
+                                                    <div className='col-span-1 flex justify-center'>
+                                                        <button className='text-gray-300 cursor-not-allowed font-gilda'>{">"}</button>
+                                                    </div>
+                                                </div>
+
+                                                <input value={filterTitle} onChange={(e) => { setFilterTitle(e.target.value) }} placeholder='Title' className='w-full border border-black font-gilda' type="text" />
+                                                <input value={filterTag} onChange={(e) => { setFilterTag(e.target.value) }} placeholder='Tags' className='w-full border border-black my-2 font-gilda' type="text" />
+
+                                                {
+                                                    filterTag === "" && filterTitle === "" ?
+                                                        <div className='flex justify-between'>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Set Filter</button>
+                                                            <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Clear Filter</button>
+                                                        </div>
+                                                        :
+                                                        <div className='flex justify-between'>
+                                                            <button className='font-gilda' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
+                                                            <button className='font-gilda' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
+                                                        </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div className='flex justify-center'>
                                         <div className='w-[95%]'>
                                             <p className='text-center text-2xl font-gilda'>There are no photos available right now</p>

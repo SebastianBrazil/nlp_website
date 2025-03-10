@@ -154,9 +154,9 @@ const Page = () => {
                                                                 <div className='col-span-1 flex justify-center'>
                                                                     {
                                                                         pageCount < pageAmount ?
-                                                                            <button className='' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                            <button className='font-gilda' onClick={() => { decreasePageCount() }}>{"<"}</button>
                                                                             :
-                                                                            <button className='text-gray-300 cursor-not-allowed' onClick={() => { decreasePageCount() }}>{"<"}</button>
+                                                                            <button className='font-gilda text-gray-300 cursor-not-allowed'>{"<"}</button>
                                                                     }
                                                                 </div>
                                                                 <div className='col-span-1 flex justify-center'>
@@ -165,9 +165,9 @@ const Page = () => {
                                                                 <div className='col-span-1 flex justify-center'>
                                                                     {
                                                                         pageCount > 1 ?
-                                                                            <button className='' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                            <button className='font-gilda' onClick={() => { increasePageCount() }}>{">"}</button>
                                                                             :
-                                                                            <button className='text-gray-300 cursor-not-allowed' onClick={() => { increasePageCount() }}>{">"}</button>
+                                                                            <button className='font-gilda text-gray-300 cursor-not-allowed'>{">"}</button>
                                                                     }
                                                                 </div>
                                                             </div>
@@ -178,13 +178,13 @@ const Page = () => {
                                                             {
                                                                 filterTag === "" && filterTitle === "" ?
                                                                     <div className='flex justify-between'>
-                                                                        <button className=' ' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
-                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
+                                                                        <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Set Filter</button>
+                                                                        <button className='font-gilda text-gray-300 cursor-not-allowed' type='button'>Clear Filter</button>
                                                                     </div>
                                                                     :
                                                                     <div className='flex justify-between'>
-                                                                        <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
-                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
+                                                                        <button className='font-gilda' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
+                                                                        <button className='font-gilda' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
                                                                     </div>
                                                             }
                                                         </div>
