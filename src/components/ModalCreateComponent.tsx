@@ -2,6 +2,7 @@ import { IGalleryObject, IModalCreateProps } from '@/interfaces/interface'
 import React, { useEffect, useState } from 'react'
 import DummyDisplayComponent from './DummyDisplayComponent';
 import { createNewGalleryGroup } from '@/utils/utils-gallery';
+import ModalToastComponent from './ModalToastComponent';
 
 const ModalCreateComponent = (props: IModalCreateProps) => {
     const [title, setTitle] = useState<string>("");
@@ -16,7 +17,10 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
     const [photoError, setPhotoError] = useState<boolean>(false);
     const [hasBeenWarned, setHasBeenWarned] = useState<boolean>(false);
 
-    const [isEnabled, setIsEnabled] = useState<boolean>(true)
+    const [isEnabled, setIsEnabled] = useState<boolean>(true);
+
+    const [openToast, setOpenToast] = useState<boolean>(false);
+    const [innerText, setInnerText] = useState<string>();
 
     const closeModal = () => {
         props.setIsModalOpen(false);
@@ -82,15 +86,17 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
             const response = await createNewGalleryGroup(passedData);
             if (response) {
                 closeModal();
-
+                
                 setTitle("");
                 setDescription("");
                 setSingleTag("");
                 setTags([]);
                 setPhotos([]);
+                props.setRenderSubmit(!props.renderSubmit)
             }
         } catch (e) {
-            // console.log("Uh: " + e);
+            setInnerText("An Error Has Occurred While Creating The Photo Grouping, Please Try Again Later");
+            setOpenToast(true);
         }
 
         setIsEnabled(true);
@@ -257,6 +263,11 @@ const ModalCreateComponent = (props: IModalCreateProps) => {
                     <button type='button' className='text-2xl w-min bg-[#EEEEEE] cursor-pointer text-[#222831] py-2 px-8 rounded-3xl font-gilda' onClick={() => { closeModal() }}>Close</button>
                 </div>
             </div>
+
+            {
+                openToast && innerText &&
+                <ModalToastComponent innerText={innerText} openToast={openToast} setOpenToast={setOpenToast} />
+            }
         </div>
     )
 }

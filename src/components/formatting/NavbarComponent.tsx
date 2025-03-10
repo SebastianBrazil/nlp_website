@@ -105,7 +105,7 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                                 <div className='w-full h-[60px] bg-[#EEEEEE] flex justify-center'>
                                     <div className='w-[550px] grid items-center'>
                                         <div className='flex justify-between'>
-                                            <p className='text-[#222831] font-gilda tracking-wide text-3xl'>Home</p>
+                                            <p className='text-[#222831] font-gilda tracking-wide text-3xl'>Landing</p>
                                             <p className='text-[#222831] font-gilda tracking-wide text-3xl'>Gallery</p>
                                             <p className='text-[#222831] font-gilda tracking-wide text-3xl'>Job Notes</p>
                                             <p className='text-[#222831] font-gilda tracking-wide text-3xl'>Sign Out</p>
@@ -144,7 +144,7 @@ const NavbarComponent = ({ checkState }: { "checkState": string }) => {
                                 <div className='w-full h-[60px] bg-[#EEEEEE] flex justify-center'>
                                     <div className='w-[550px] grid items-center'>
                                         <div className='flex justify-between'>
-                                            <a className='text-[#222831] cursor-pointer font-gilda tracking-wide text-3xl' onClick={() => { goToAdminHome() }}>Home</a>
+                                            <a className='text-[#222831] cursor-pointer font-gilda tracking-wide text-3xl' onClick={() => { goToAdminHome() }}>Landing</a>
                                             <a className='text-[#222831] cursor-pointer font-gilda tracking-wide text-3xl' onClick={() => { goToAdminGallery() }}>Gallery</a>
                                             <a className='text-[#222831] cursor-pointer font-gilda tracking-wide text-3xl' onClick={() => { goToJobNotes() }}>Job Notes</a>
                                             <a className='text-[#222831] cursor-pointer font-gilda tracking-wide text-3xl' onClick={() => { signOut() }}>Sign Out</a>

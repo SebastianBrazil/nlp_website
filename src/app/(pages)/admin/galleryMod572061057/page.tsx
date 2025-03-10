@@ -178,13 +178,13 @@ const Page = () => {
                                                             {
                                                                 filterTag === "" && filterTitle === "" ?
                                                                     <div className='flex justify-between'>
-                                                                        <button className=' ' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                                        <button className=' ' onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
+                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
                                                                     </div>
                                                                     :
                                                                     <div className='flex justify-between'>
-                                                                        <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Filter</button>
-                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear</button>
+                                                                        <button onClick={() => { setRenderSubmit(!renderSubmit) }} type='button'>Set Filter</button>
+                                                                        <button className='' onClick={() => { setFilterTitle(""); setFilterTag(""); setRenderSubmit(!renderSubmit) }} type='button'>Clear Filter</button>
                                                                     </div>
                                                             }
                                                         </div>
